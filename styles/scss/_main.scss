@@ -1,0 +1,80 @@
+.main_app {
+    @include containerFull;
+
+    &_content {
+        @include container(600px);
+
+        &_input {
+            @include containerFull;
+
+            form {
+                margin-bottom: 20px;
+                background-color: $color-very-dark-desaturated-blue;
+                padding: 20px;
+
+                @include borderRadius;
+                @include flex(flex-start, center, nowrap);
+                gap: 10px;
+            }
+        }
+
+        &_tasks {
+            background-color: $color-very-dark-desaturated-blue;
+            @include borderRadius($radius-default $radius-default 0 0);
+
+            &_list {
+                font-size: 0.7em;
+
+                li {
+                    list-style: none;
+                    padding: 20px;
+                    @include flex;
+                    gap: 10px;
+                    border-bottom: 1px solid $color-very-dark-grayish-blue-3;
+
+                    // &:not(:last-child) {
+                    //     border-bottom: 1px solid $color-very-dark-grayish-blue-3;
+                    // }
+
+                    .complete, .delete {
+                        @include flexBasis(18px);
+
+                        i {
+                            color: $color-very-dark-grayish-blue-3;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .task {
+                        @include flexBasis(calc(100% - (18px * 2) - (10px * 2)));
+                    }
+                }
+            }
+        }
+
+        &_actions {
+            background-color: $color-very-dark-desaturated-blue;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 0.7em;
+
+            @include borderRadius(0 0 $radius-default $radius-default);
+            @include flex(space-between);
+
+            button {
+                font-size: inherit;
+            }
+        }
+
+        &_filter {
+            background-color: $color-very-dark-desaturated-blue;
+            padding: 20px;
+            margin-bottom: 60px;
+            font-size: 0.7em;
+
+            @include borderRadius;
+            @include flex;
+            gap: 20px;
+        }
+    }
+}

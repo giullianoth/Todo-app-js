@@ -16,23 +16,67 @@ body {
     @include relative;
     z-index: 1;
 
+    background-color: $color-very-dark-blue;
+    color: $color-light-grayish-blue-2;
+
     @include transition;
 
     .img_background {
-        @include backgroundImage("../../images/bg-mobile-dark.jpg", no-repeat, cover,);
         @include containerFull;
-        height: 25%;
+        height: 30%;
+
+        @include backgroundImage("../../images/bg-mobile-dark.jpg");
 
         @include absolute;
         z-index: -1;
     }
 
-    &.dark_theme {
-        background-color: $color-very-dark-blue;
-        color: $color-light-grayish-blue-2;
+    &.light_theme {
+        background-color: $color-very-light-gray;
+        color: $color-very-dark-grayish-blue;
+
+        .img_background {
+            @include backgroundImage("../../images/bg-mobile-light.jpg");
+        }
     }
 
-    &.light_theme {
+    input[type="text"] {
+        background:none;
+        border: none;
+        font-family: inherit;
+        color: inherit;
+        font-size: 0.8em;
+        outline: none;
 
+        @include borderRadius;
+    }
+
+    input[type="checkbox"] {
+        cursor: pointer;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 1px solid $color-very-dark-grayish-blue-3;
+        @include borderRadius(100%);
+        @include transition;
+
+        &:checked {
+            background-image: linear-gradient(45deg, $color-check-background);
+            border-color: transparent;
+        }
+    }
+
+    button {
+        background: none;
+        border: none;
+        color: $color-very-dark-grayish-blue-2;
+        font-family: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        @include transition;
+
+        &:hover {
+            color: $color-light-grayish-blue-hover;
+        }
     }
 }
