@@ -40,9 +40,17 @@
     
             &_filter {
                 background-color: $color-white;
+
+                @include setResponsiveDesign(600px) {
+                    background: none;
+                }
     
                 button {
                     color: $color-dark-grayish-blue;
+                    
+                    &.active {
+                        color: $color-bright-blue;
+                    }
                 }
             }
         }

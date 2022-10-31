@@ -29,7 +29,7 @@ body {
 
         @include absolute;
         z-index: -1;
-        
+
         @include transition;
     }
 
@@ -51,6 +51,12 @@ body {
 
         input[type="checkbox"] {
             border-color: $color-light-grayish-blue;
+        }
+
+        button {
+            &:hover {
+                color: $color-very-dark-grayish-blue-3;
+            }
         }
     }
 

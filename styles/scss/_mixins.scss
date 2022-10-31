@@ -93,9 +93,9 @@
     }
 }
 
-// RESPONSIVE DESIGN
+// RESPONSIVE DESIGN - Mobile First
 @mixin setResponsiveDesign($screenWidth) {
-    @media screen and (max-width: $screenWidth) {
+    @media screen and (min-width: $screenWidth) {
         @content;
     }
 }

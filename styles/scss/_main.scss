@@ -33,21 +33,42 @@
                 li {
                     list-style: none;
                     padding: 20px;
+
                     @include flex;
                     gap: 10px;
                     border-bottom: 1px solid $color-very-dark-grayish-blue-3;
+                    cursor: default;
 
-                    .complete, .delete {
+                    @include transition;
+
+                    &:hover {
+                        .delete {
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+
+                    .complete {
                         @include flexBasis(18px);
+                    }
+
+                    .task {
+                        @include flexBasis(calc(100% - (18px * 2) - (10px * 2)));
+                    }
+
+                    .delete {
+                        @include flexBasis(18px);
+                        @include transition;
 
                         i {
                             color: $color-very-dark-grayish-blue-3;
                             cursor: pointer;
                         }
-                    }
 
-                    .task {
-                        @include flexBasis(calc(100% - (18px * 2) - (10px * 2)));
+                        @include setResponsiveDesign(900px) {
+                            visibility: hidden;
+                            opacity: 0;
+                        }
                     }
 
                     &.completed {
@@ -65,12 +86,17 @@
             padding: 20px;
             margin-bottom: 20px;
             font-size: 0.7em;
+            color: $color-very-dark-grayish-blue-2;
 
             @include borderRadius(0 0 $radius-default $radius-default);
             @include flex(space-between);
             
             @include boxShadow(0, 10px, 10px, 0);
             @include transition;
+
+            @include setResponsiveDesign(600px) {
+                margin-bottom: 0;
+            }
 
             button {
                 font-size: inherit;
@@ -82,7 +108,7 @@
             background-color: $color-very-dark-desaturated-blue;
             padding: 20px;
             margin-bottom: 60px;
-            font-size: 0.7em;
+            font-size: 1em;
 
             @include borderRadius;
             @include flex;
@@ -90,6 +116,24 @@
 
             @include boxShadow(0, 0, 10px);
             @include transition;
+
+            @include setResponsiveDesign(600px) {
+                width: auto;
+                padding: 0;
+                background: none;
+                box-shadow: none;
+            }
+
+            button {
+                &.active {
+                    color: $color-bright-blue;
+                }
+                
+                @include setResponsiveDesign(600px) {
+                    font-size: 1em;
+                    transform: translateY(-175%);
+                }
+            }
         }
     }
 }
