@@ -1,0 +1,38 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    @include setBrowsers(box-sizing, border-box);
+}
+
+body {
+    font-family: $font-josefin-sans;
+    font-size: $font-size-default;
+    height: 100%;
+    min-height: 100vh;
+
+    @include flex(flex-start);
+    flex-direction: column;
+
+    @include relative;
+    z-index: 1;
+
+    @include transition;
+
+    .img_background {
+        @include backgroundImage("../../images/bg-mobile-dark.jpg", no-repeat, cover,);
+        @include containerFull;
+        height: 25%;
+
+        @include absolute;
+        z-index: -1;
+    }
+
+    &.dark_theme {
+        background-color: $color-very-dark-blue;
+        color: $color-light-grayish-blue-2;
+    }
+
+    &.light_theme {
+
+    }
+}

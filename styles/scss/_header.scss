@@ -1,0 +1,27 @@
+.main_header {
+    @include containerFull;
+
+    &_content {
+        @include container(600px);
+        margin: {
+            top: 60px;
+            bottom: 40px;
+        };
+
+        @include flex(space-between, center, nowrap);
+
+        &_title {
+            h1 {
+                font-size: 1.4em;
+                color: $color-white;
+                text-transform: uppercase;
+                letter-spacing: 0.4em;
+            }
+        }
+
+        &_theme {
+            color: $color-white;
+            cursor: pointer;
+        }
+    }
+}

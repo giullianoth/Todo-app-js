@@ -1,0 +1,10 @@
+// Font `Josefin Sans` from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,700&display=swap');
+
+// Sass variables and mixins
+@import "variables";
+@import "mixins";
+
+// Page Stylize
+@import "boot";
+@import "header";

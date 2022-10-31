@@ -1,0 +1,101 @@
+// CONTAINER WIDTH
+@mixin container($maxWidth: $container-max-width) {
+    max-width: $maxWidth;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@mixin containerFull() {
+    width: 100%;
+}
+
+// BROWSERS
+@mixin setBrowsers($attr, $value, $browsers: $browsers-default) {
+    #{$attr}: #{$value};
+
+    @each $browser in $browsers {
+        -#{$browser}-#{$attr}: #{$value};
+    }
+}
+
+// BORDER RADIUS
+@mixin borderRadius($radius: $radius-default) {
+    @include setBrowsers(border-radius, $radius);
+}
+
+// FLEXBOX
+@mixin flex($justifyContent: center, $alignitems: center, $flexWrap: wrap) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: $alignitems;
+    flex-wrap: $flexWrap;
+}
+
+@mixin flexBasis($basis, $gap: 0) {
+    @if $gap !=0 {
+        flex-basis: calc($basis - $gap);
+    }
+
+    @else {
+        flex-basis: $basis;
+    }
+}
+
+// POSITION
+// Relative
+@mixin relative() {
+    position: relative;
+}
+
+// Absolute
+@mixin absolute($top: 0, $left: 0) {
+    position: absolute;
+    top: $top;
+    left: $left;
+}
+
+// TRANSITION
+@mixin transition($property: all, $duration: 0.3s, $timingFunction: ease, $delay: 0s) {
+    transition: $property $duration $timingFunction $delay;
+}
+
+// BOX SHADOW
+@mixin boxShadow($xOffset: 0, $yOffset: 0, $blur: 0, $spread: 0, $color: $color-shadow) {
+    box-shadow: $xOffset $yOffset $blur $spread $color;
+}
+
+// BACKGROUND IMAGE
+@mixin backgroundImage($img-path: "", $repeat: no-repeat, $size: cover, $position: center center) {
+    @if $img-path  !="" {
+        background-image: url($img-path);
+    }
+
+    background-repeat: $repeat;
+    background-size: $size;
+    background-position: $position;
+}
+
+// Animation and Keyframes
+@mixin animation($name, $setup, $duration: 1s, $iterationCount: infinite, $timingFunction: ease-in-out) {
+    animation: $name $duration $iterationCount $timingFunction;
+    
+    @keyframes #{$name} {
+        @for $i from 1 through length($list: $setup) {
+
+            $frame: calc((($i * 100%) / (length($list: $setup) - 1)) - (100% / (length($list: $setup) - 1)));
+            
+            #{$frame} {
+                @each $attr, $value in nth($list: $setup, $n: $i) {
+                    #{$attr}: #{$value};
+                }
+            }
+        }
+    }
+}
+
+// RESPONSIVE DESIGN
+@mixin setResponsiveDesign($screenWidth) {
+    @media screen and (max-width: $screenWidth) {
+        @content;
+    }
+}
