@@ -45,6 +45,22 @@
                         .delete {
                             visibility: visible;
                             opacity: 1;
+
+                            i {
+                                color: $color-very-dark-grayish-blue-2;
+                            }
+                        }
+
+                        input[type="checkbox"] {
+                            border-color: transparent;
+                            border-style: double;
+
+                            background-image:
+                                linear-gradient(45deg, $color-very-dark-desaturated-blue, $color-very-dark-desaturated-blue),
+                                linear-gradient(45deg, $color-check-background);
+
+                            @include setBrowsers(background-origin, border-box);
+                            @include setBrowsers(background-clip, (padding-box, border-box));
                         }
                     }
 
@@ -60,14 +76,14 @@
                         @include flexBasis(18px);
                         @include transition;
 
-                        i {
-                            color: $color-very-dark-grayish-blue-3;
-                            cursor: pointer;
-                        }
-
                         @include setResponsiveDesign(900px) {
                             visibility: hidden;
                             opacity: 0;
+                        }
+
+                        i {
+                            color: $color-very-dark-grayish-blue-3;
+                            cursor: pointer;
                         }
                     }
 
@@ -90,7 +106,7 @@
 
             @include borderRadius(0 0 $radius-default $radius-default);
             @include flex(space-between);
-            
+
             @include boxShadow(0, 10px, 10px, 0);
             @include transition;
 
@@ -128,7 +144,7 @@
                 &.active {
                     color: $color-bright-blue;
                 }
-                
+
                 @include setResponsiveDesign(600px) {
                     font-size: 1em;
                     transform: translateY(-175%);

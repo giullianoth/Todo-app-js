@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,700&display=swap");
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -55,6 +57,9 @@ body.light_theme input[type=text]::placeholder {
 body.light_theme input[type=checkbox] {
   border-color: hsl(233deg, 11%, 84%);
 }
+body.light_theme input[type=checkbox]:hover {
+  background-image: linear-gradient(45deg, hsl(0deg, 0%, 100%), hsl(0deg, 0%, 100%)), linear-gradient(45deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+}
 body.light_theme button:hover {
   color: hsl(237deg, 14%, 26%);
 }
@@ -87,6 +92,17 @@ body input[type=checkbox] {
 body input[type=checkbox]:checked {
   background-image: linear-gradient(45deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   border-color: transparent;
+}
+body input[type=checkbox]:hover {
+  border-color: transparent;
+  border-style: double;
+  background-image: linear-gradient(45deg, hsl(235deg, 24%, 19%), hsl(235deg, 24%, 19%)), linear-gradient(45deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+  background-origin: border-box;
+  -moz-background-origin: border-box;
+  -webkit-background-origin: border-box;
+  background-clip: padding-box, border-box;
+  -moz-background-clip: padding-box, border-box;
+  -webkit-background-clip: padding-box, border-box;
 }
 body button {
   background: none;
@@ -183,6 +199,20 @@ body button:hover {
   visibility: visible;
   opacity: 1;
 }
+.main_app_content_tasks_list li:hover .delete i {
+  color: hsl(233deg, 14%, 35%);
+}
+.main_app_content_tasks_list li:hover input[type=checkbox] {
+  border-color: transparent;
+  border-style: double;
+  background-image: linear-gradient(45deg, hsl(235deg, 24%, 19%), hsl(235deg, 24%, 19%)), linear-gradient(45deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+  background-origin: border-box;
+  -moz-background-origin: border-box;
+  -webkit-background-origin: border-box;
+  background-clip: padding-box, border-box;
+  -moz-background-clip: padding-box, border-box;
+  -webkit-background-clip: padding-box, border-box;
+}
 .main_app_content_tasks_list li .complete {
   flex-basis: 18px;
 }
@@ -193,15 +223,15 @@ body button:hover {
   flex-basis: 18px;
   transition: all 0.3s ease 0s;
 }
-.main_app_content_tasks_list li .delete i {
-  color: hsl(237deg, 14%, 26%);
-  cursor: pointer;
-}
 @media screen and (min-width: 900px) {
   .main_app_content_tasks_list li .delete {
     visibility: hidden;
     opacity: 0;
   }
+}
+.main_app_content_tasks_list li .delete i {
+  color: hsl(237deg, 14%, 26%);
+  cursor: pointer;
 }
 .main_app_content_tasks_list li.completed .task {
   color: hsl(233deg, 14%, 35%);
@@ -275,11 +305,17 @@ body button:hover {
 .light_theme .main_app_content_tasks_list li {
   border-color: hsl(236deg, 33%, 92%);
 }
-.light_theme .main_app_content_tasks_list li .complete i, .light_theme .main_app_content_tasks_list li .delete i {
+.light_theme .main_app_content_tasks_list li .delete i {
   color: hsl(233deg, 11%, 84%);
 }
 .light_theme .main_app_content_tasks_list li.completed .task {
   color: hsl(233deg, 11%, 84%);
+}
+.light_theme .main_app_content_tasks_list li:hover input[type=checkbox] {
+  background-image: linear-gradient(45deg, hsl(0deg, 0%, 100%), hsl(0deg, 0%, 100%)), linear-gradient(45deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+}
+.light_theme .main_app_content_tasks_list li:hover .delete i {
+  color: hsl(236deg, 9%, 61%);
 }
 .light_theme .main_app_content_actions {
   background-color: hsl(0deg, 0%, 100%);

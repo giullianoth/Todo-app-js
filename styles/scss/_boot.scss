@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     @include setBrowsers(box-sizing, border-box);
@@ -51,6 +53,12 @@ body {
 
         input[type="checkbox"] {
             border-color: $color-light-grayish-blue;
+
+            &:hover {
+                background-image:
+                    linear-gradient(45deg, $color-white, $color-white),
+                    linear-gradient(45deg, $color-check-background);
+            }
         }
 
         button {
@@ -61,7 +69,7 @@ body {
     }
 
     input[type="text"] {
-        background:none;
+        background: none;
         border: none;
         font-family: inherit;
         color: inherit;
@@ -85,6 +93,18 @@ body {
         &:checked {
             background-image: linear-gradient(45deg, $color-check-background);
             border-color: transparent;
+        }
+
+        &:hover {
+            border-color: transparent;
+            border-style: double;
+
+            background-image:
+                linear-gradient(45deg, $color-very-dark-desaturated-blue, $color-very-dark-desaturated-blue),
+                linear-gradient(45deg, $color-check-background);
+
+            @include setBrowsers(background-origin, border-box);
+            @include setBrowsers(background-clip, (padding-box, border-box));
         }
     }
 
