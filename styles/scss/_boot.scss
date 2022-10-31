@@ -29,6 +29,8 @@ body {
 
         @include absolute;
         z-index: -1;
+        
+        @include transition;
     }
 
     &.light_theme {

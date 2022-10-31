@@ -1,4 +1,4 @@
-body.light_theme {
+.light_theme {
     .main_app {
         &_content {
             &_input {
@@ -16,6 +16,12 @@ body.light_theme {
     
                         .complete, .delete {
                             i {
+                                color: $color-light-grayish-blue;
+                            }
+                        }
+
+                        &.completed {
+                            .task {
                                 color: $color-light-grayish-blue;
                             }
                         }

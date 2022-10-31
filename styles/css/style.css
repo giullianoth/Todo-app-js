@@ -34,6 +34,7 @@ body .img_background {
   top: 0;
   left: 0;
   z-index: -1;
+  transition: all 0.3s ease 0s;
 }
 body.light_theme {
   background-color: hsl(0deg, 0%, 98%);
@@ -145,6 +146,7 @@ body button:hover {
   align-items: center;
   flex-wrap: nowrap;
   gap: 10px;
+  transition: all 0.3s ease 0s;
 }
 .main_app_content_tasks {
   background-color: hsl(235deg, 24%, 19%);
@@ -152,6 +154,7 @@ body button:hover {
   -moz-border-radius: 5px 5px 0 0;
   -webkit-border-radius: 5px 5px 0 0;
   box-shadow: 0 10px 10px 0 hsla(0deg, 0%, 0%, 0.1);
+  transition: all 0.3s ease 0s;
 }
 .main_app_content_tasks_list {
   font-size: 0.7em;
@@ -193,6 +196,7 @@ body button:hover {
   align-items: center;
   flex-wrap: wrap;
   box-shadow: 0 10px 10px 0 hsla(0deg, 0%, 0%, 0.1);
+  transition: all 0.3s ease 0s;
 }
 .main_app_content_actions button {
   font-size: inherit;
@@ -212,30 +216,34 @@ body button:hover {
   flex-wrap: wrap;
   gap: 20px;
   box-shadow: 0 0 10px 0 hsla(0deg, 0%, 0%, 0.1);
+  transition: all 0.3s ease 0s;
 }
 
-body.light_theme .main_app_content_input form {
+.light_theme .main_app_content_input form {
   background-color: hsl(0deg, 0%, 100%);
 }
-body.light_theme .main_app_content_tasks {
+.light_theme .main_app_content_tasks {
   background-color: hsl(0deg, 0%, 100%);
 }
-body.light_theme .main_app_content_tasks_list li {
+.light_theme .main_app_content_tasks_list li {
   border-color: hsl(236deg, 33%, 92%);
 }
-body.light_theme .main_app_content_tasks_list li .complete i, body.light_theme .main_app_content_tasks_list li .delete i {
+.light_theme .main_app_content_tasks_list li .complete i, .light_theme .main_app_content_tasks_list li .delete i {
   color: hsl(233deg, 11%, 84%);
 }
-body.light_theme .main_app_content_actions {
+.light_theme .main_app_content_tasks_list li.completed .task {
+  color: hsl(233deg, 11%, 84%);
+}
+.light_theme .main_app_content_actions {
   background-color: hsl(0deg, 0%, 100%);
   color: hsl(236deg, 9%, 61%);
 }
-body.light_theme .main_app_content_actions button {
+.light_theme .main_app_content_actions button {
   color: inherit;
 }
-body.light_theme .main_app_content_filter {
+.light_theme .main_app_content_filter {
   background-color: hsl(0deg, 0%, 100%);
 }
-body.light_theme .main_app_content_filter button {
+.light_theme .main_app_content_filter button {
   color: hsl(236deg, 9%, 61%);
 }
