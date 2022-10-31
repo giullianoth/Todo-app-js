@@ -45,6 +45,15 @@ body.light_theme .img_background {
   background-size: cover;
   background-position: center center;
 }
+body.light_theme input[type=text] {
+  color: hsl(236deg, 9%, 61%);
+}
+body.light_theme input[type=text]::placeholder {
+  color: inherit;
+}
+body.light_theme input[type=checkbox] {
+  border-color: hsl(233deg, 11%, 84%);
+}
 body input[type=text] {
   background: none;
   border: none;
@@ -66,6 +75,10 @@ body input[type=checkbox] {
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   transition: all 0.3s ease 0s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 body input[type=checkbox]:checked {
   background-image: linear-gradient(45deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
@@ -138,6 +151,7 @@ body button:hover {
   border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
   -webkit-border-radius: 5px 5px 0 0;
+  box-shadow: 0 10px 10px 0 hsla(0deg, 0%, 0%, 0.1);
 }
 .main_app_content_tasks_list {
   font-size: 0.7em;
@@ -162,6 +176,10 @@ body button:hover {
 .main_app_content_tasks_list li .task {
   flex-basis: calc(100% - 36px - 20px);
 }
+.main_app_content_tasks_list li.completed .task {
+  color: hsl(233deg, 14%, 35%);
+  text-decoration: line-through;
+}
 .main_app_content_actions {
   background-color: hsl(235deg, 24%, 19%);
   padding: 20px;
@@ -174,9 +192,11 @@ body button:hover {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  box-shadow: 0 10px 10px 0 hsla(0deg, 0%, 0%, 0.1);
 }
 .main_app_content_actions button {
   font-size: inherit;
+  font-weight: 400;
 }
 .main_app_content_filter {
   background-color: hsl(235deg, 24%, 19%);
@@ -191,4 +211,31 @@ body button:hover {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
+  box-shadow: 0 0 10px 0 hsla(0deg, 0%, 0%, 0.1);
+}
+
+body.light_theme .main_app_content_input form {
+  background-color: hsl(0deg, 0%, 100%);
+}
+body.light_theme .main_app_content_tasks {
+  background-color: hsl(0deg, 0%, 100%);
+}
+body.light_theme .main_app_content_tasks_list li {
+  border-color: hsl(236deg, 33%, 92%);
+}
+body.light_theme .main_app_content_tasks_list li .complete i, body.light_theme .main_app_content_tasks_list li .delete i {
+  color: hsl(233deg, 11%, 84%);
+}
+body.light_theme .main_app_content_actions {
+  background-color: hsl(0deg, 0%, 100%);
+  color: hsl(236deg, 9%, 61%);
+}
+body.light_theme .main_app_content_actions button {
+  color: inherit;
+}
+body.light_theme .main_app_content_filter {
+  background-color: hsl(0deg, 0%, 100%);
+}
+body.light_theme .main_app_content_filter button {
+  color: hsl(236deg, 9%, 61%);
 }

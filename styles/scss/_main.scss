@@ -22,6 +22,8 @@
             background-color: $color-very-dark-desaturated-blue;
             @include borderRadius($radius-default $radius-default 0 0);
 
+            @include boxShadow(0, 10px, 10px, 0);
+
             &_list {
                 font-size: 0.7em;
 
@@ -31,10 +33,6 @@
                     @include flex;
                     gap: 10px;
                     border-bottom: 1px solid $color-very-dark-grayish-blue-3;
-
-                    // &:not(:last-child) {
-                    //     border-bottom: 1px solid $color-very-dark-grayish-blue-3;
-                    // }
 
                     .complete, .delete {
                         @include flexBasis(18px);
@@ -48,6 +46,13 @@
                     .task {
                         @include flexBasis(calc(100% - (18px * 2) - (10px * 2)));
                     }
+
+                    &.completed {
+                        .task {
+                            color: $color-very-dark-grayish-blue-2;
+                            text-decoration: line-through;
+                        }
+                    }
                 }
             }
         }
@@ -60,9 +65,12 @@
 
             @include borderRadius(0 0 $radius-default $radius-default);
             @include flex(space-between);
+            
+            @include boxShadow(0, 10px, 10px, 0);
 
             button {
                 font-size: inherit;
+                font-weight: 400;
             }
         }
 
@@ -75,6 +83,8 @@
             @include borderRadius;
             @include flex;
             gap: 20px;
+
+            @include boxShadow(0, 0, 10px);
         }
     }
 }

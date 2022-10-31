@@ -38,6 +38,18 @@ body {
         .img_background {
             @include backgroundImage("../../images/bg-mobile-light.jpg");
         }
+
+        input[type="text"] {
+            color: $color-dark-grayish-blue;
+
+            &::placeholder {
+                color: inherit;
+            }
+        }
+
+        input[type="checkbox"] {
+            border-color: $color-light-grayish-blue;
+        }
     }
 
     input[type="text"] {
@@ -59,6 +71,8 @@ body {
         border: 1px solid $color-very-dark-grayish-blue-3;
         @include borderRadius(100%);
         @include transition;
+
+        @include flex;
 
         &:checked {
             background-image: linear-gradient(45deg, $color-check-background);

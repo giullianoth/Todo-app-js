@@ -1,0 +1,44 @@
+body.light_theme {
+    .main_app {
+        &_content {
+            &_input {
+                form {
+                    background-color: $color-white;
+                }
+            }
+    
+            &_tasks {
+                background-color: $color-white;
+    
+                &_list {
+                    li {
+                        border-color: $color-very-light-grayish-blue;
+    
+                        .complete, .delete {
+                            i {
+                                color: $color-light-grayish-blue;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            &_actions {
+                background-color: $color-white;
+                color: $color-dark-grayish-blue;
+    
+                button {
+                    color: inherit;
+                }
+            }
+    
+            &_filter {
+                background-color: $color-white;
+    
+                button {
+                    color: $color-dark-grayish-blue;
+                }
+            }
+        }
+    }
+}
