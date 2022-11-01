@@ -224,6 +224,23 @@ body button:hover {
 }
 .main_app_content_tasks_list li .complete {
   flex-basis: 18px;
+  position: relative;
+}
+.main_app_content_tasks_list li .complete i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8em;
+  visibility: hidden;
+  opacity: 0;
+  cursor: pointer;
+  color: hsl(0deg, 0%, 100%);
+  transition: all 0.3s ease 0s;
+}
+.main_app_content_tasks_list li .complete input[type=checkbox]:checked ~ i {
+  visibility: visible;
+  opacity: 1;
 }
 .main_app_content_tasks_list li .task {
   flex-basis: calc(100% - 36px - 20px);

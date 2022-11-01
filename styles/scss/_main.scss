@@ -70,6 +70,25 @@
 
                     .complete {
                         @include flexBasis(18px);
+                        @include relative;
+
+                        i {
+                            @include absolute(50%, 50%);
+                            transform: translate(-50%, -50%);
+                            font-size: 0.8em;
+                            visibility: hidden;
+                            opacity: 0;
+                            cursor: pointer;
+                            color: $color-white;
+                            @include transition;
+                        }
+
+                        input[type="checkbox"] {
+                            &:checked ~ i {
+                                visibility: visible;
+                                opacity: 1;
+                            }
+                        }
                     }
 
                     .task {
