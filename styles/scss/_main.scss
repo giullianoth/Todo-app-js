@@ -61,6 +61,10 @@
 
                             @include setBrowsers(background-origin, border-box);
                             @include setBrowsers(background-clip, (padding-box, border-box));
+
+                            &:checked {
+                                background-image: linear-gradient(45deg, $color-check-background) !important;
+                            }
                         }
                     }
 
@@ -83,6 +87,7 @@
 
                         i {
                             color: $color-very-dark-grayish-blue-3;
+                            font-size: 1.4em;
                             cursor: pointer;
                         }
                     }

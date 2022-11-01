@@ -51,6 +51,12 @@ body.light_theme .img_background {
 body.light_theme input[type=text] {
   color: hsl(236deg, 9%, 61%);
 }
+body.light_theme input[type=text]::-moz-placeholder {
+  color: inherit;
+}
+body.light_theme input[type=text]:-ms-input-placeholder {
+  color: inherit;
+}
 body.light_theme input[type=text]::placeholder {
   color: inherit;
 }
@@ -76,7 +82,9 @@ body input[type=text] {
 }
 body input[type=checkbox] {
   cursor: pointer;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   width: 18px;
   height: 18px;
   border: 1px solid hsl(237deg, 14%, 26%);
@@ -92,6 +100,9 @@ body input[type=checkbox] {
 body input[type=checkbox]:checked {
   background-image: linear-gradient(45deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
   border-color: transparent;
+}
+body input[type=checkbox]:checked:hover {
+  background-image: linear-gradient(45deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
 }
 body input[type=checkbox]:hover {
   border-color: transparent;
@@ -213,6 +224,9 @@ body button:hover {
   -moz-background-clip: padding-box, border-box;
   -webkit-background-clip: padding-box, border-box;
 }
+.main_app_content_tasks_list li:hover input[type=checkbox]:checked {
+  background-image: linear-gradient(45deg, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%)) !important;
+}
 .main_app_content_tasks_list li .complete {
   flex-basis: 18px;
 }
@@ -231,6 +245,7 @@ body button:hover {
 }
 .main_app_content_tasks_list li .delete i {
   color: hsl(237deg, 14%, 26%);
+  font-size: 1.4em;
   cursor: pointer;
 }
 .main_app_content_tasks_list li.completed .task {
