@@ -51,12 +51,6 @@ body.light_theme .img_background {
 body.light_theme input[type=text] {
   color: hsl(236deg, 9%, 61%);
 }
-body.light_theme input[type=text]::-moz-placeholder {
-  color: inherit;
-}
-body.light_theme input[type=text]:-ms-input-placeholder {
-  color: inherit;
-}
 body.light_theme input[type=text]::placeholder {
   color: inherit;
 }
@@ -82,9 +76,7 @@ body input[type=text] {
 }
 body input[type=checkbox] {
   cursor: pointer;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   width: 18px;
   height: 18px;
   border: 1px solid hsl(237deg, 14%, 26%);
@@ -357,4 +349,13 @@ body button:hover {
 }
 .light_theme .main_app_content_filter button.active {
   color: hsl(220deg, 98%, 61%);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(220deg, 98%, 61%);
+  text-decoration: none;
 }
