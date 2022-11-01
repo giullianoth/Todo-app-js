@@ -10,7 +10,7 @@
 
         @include flex(space-between, center, nowrap);
 
-        @include setResponsiveDesign(900px) {
+        @include setResponsiveDesign($layout-desktop) {
             margin-top: 120px;
         }
 
