@@ -38,6 +38,9 @@
                     gap: 10px;
                     border-bottom: 1px solid $color-very-dark-grayish-blue-3;
                     cursor: default;
+                    height: auto;
+                    max-height: 60px;
+                    overflow: hidden;
 
                     @include transition;
 
