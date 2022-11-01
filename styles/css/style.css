@@ -74,6 +74,26 @@ body input[type=text] {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
+body label.complete {
+  flex-basis: 18px;
+  position: relative;
+}
+body label.complete i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.5em;
+  visibility: hidden;
+  opacity: 0;
+  cursor: pointer;
+  color: hsl(0deg, 0%, 100%);
+  transition: all 0.3s ease 0s;
+}
+body label.complete input[type=checkbox]:checked ~ i {
+  visibility: visible;
+  opacity: 1;
+}
 body input[type=checkbox] {
   cursor: pointer;
   appearance: none;
