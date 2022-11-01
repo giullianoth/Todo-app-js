@@ -149,6 +149,9 @@ body button:hover {
   color: hsl(0deg, 0%, 100%);
   cursor: pointer;
 }
+.main_header_content_theme i {
+  transition: all 0.3s ease 0s;
+}
 
 .main_app {
   width: 100%;

@@ -26,6 +26,10 @@
         &_theme {
             color: $color-white;
             cursor: pointer;
+
+            i {
+                @include transition;
+            }
         }
     }
 }
