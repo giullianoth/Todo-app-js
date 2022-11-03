@@ -10,7 +10,7 @@ const completeTask = (checkComplete, position) => {
         task[position].classList.remove("completed");
     }
 
-    todoList[position].complete = check.checked;
+    todoList[position] = task[position];
 }
 
 export default completeTask;

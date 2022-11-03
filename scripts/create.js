@@ -60,7 +60,7 @@ const createTask = () => {
         let task = taskElement(newTask.value, completeTask.checked);
         let complete = task.querySelectorAll(".complete");
 
-        taskList.append(task);
+        // taskList.append(task);
         todoList.push(task);
         newTask.value = "";
         filterAll.classList.add("active");
@@ -68,6 +68,7 @@ const createTask = () => {
         complete.forEach((item, i) => {
             item.addEventListener("click", () => {
                 setComplete(item, i);
+                console.log(item.querySelector(".j_complete").checked);
             })
         })
 
