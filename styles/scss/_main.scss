@@ -17,6 +17,14 @@
                 gap: 10px;
 
                 @include transition;
+
+                input[type="checkbox"] {
+                    @include flexBasis(18px);
+                }
+
+                input[type="text"] {
+                    @include flexBasis(calc(100% - 18px  - 10px));
+                }
             }
         }
 
@@ -119,6 +127,13 @@
                             color: $color-very-dark-grayish-blue-2;
                             text-decoration: line-through;
                         }
+                    }
+
+                    &.empty {
+                        font-size: 1.2em;
+                        color: $color-very-dark-grayish-blue-2;
+                        border-bottom: none;
+                        @include borderRadius;
                     }
                 }
             }

@@ -206,6 +206,12 @@ body button:hover {
   gap: 10px;
   transition: all 0.3s ease 0s;
 }
+.main_app_content_input form input[type=checkbox] {
+  flex-basis: 18px;
+}
+.main_app_content_input form input[type=text] {
+  flex-basis: calc(100% - 18px - 10px);
+}
 .main_app_content_tasks {
   background-color: hsl(235deg, 24%, 19%);
   border-radius: 5px 5px 0 0;
@@ -294,6 +300,14 @@ body button:hover {
 .main_app_content_tasks_list li.completed .task {
   color: hsl(233deg, 14%, 35%);
   text-decoration: line-through;
+}
+.main_app_content_tasks_list li.empty {
+  font-size: 1.2em;
+  color: hsl(233deg, 14%, 35%);
+  border-bottom: none;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 .main_app_content_actions {
   background-color: hsl(235deg, 24%, 19%);
