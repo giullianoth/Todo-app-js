@@ -1,7 +1,6 @@
 import todoList from "./todo-list.js";
 
-const completeTask = (checkComplete, position) => {
-    let check = checkComplete.querySelector(".j_complete");
+const completeTask = (check, position) => {
     let task = document.querySelectorAll(".j_task");
 
     if (check.checked) {
