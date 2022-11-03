@@ -1,37 +1,33 @@
-import todoList from "./todoList.js";
-
-const task = document.querySelectorAll(".j_task");
-const list = document.querySelector(".j_list");
-
-const filterAll = document.querySelector(".j_filter_all");
-const filterActive = document.querySelector(".j_filter_active");
-const filterCompleted = document.querySelector(".j_filter_completed");
+import todoList from "./todo-list.js";
 
 const updateList = (tasks) => {
+    let list = document.querySelector(".j_list");
     list.innerHTML = "";
     tasks.forEach((item) => {
         list.append(item);
     })
 }
 
-const showAll = () => {
-    updateList(todoList);
+const showAll = (list) => {    
+    updateList(list);
 }
 
-const showActive = () => {
+const showActive = (list) => {
+    
     let filter = [];
-    todoList.forEach(item => {
+    list.forEach((item) => {
         if (!item.classList.contains("completed")) {
             filter.push(item);
         }
     });
-
+    
     updateList(filter);
 }
 
-const showCompleted = () => {
+const showCompleted = (list) => {
+    
     let filter = [];
-    todoList.forEach(item => {
+    list.forEach((item) => {
         if (item.classList.contains("completed")) {
             filter.push(item);
         }
@@ -40,27 +36,25 @@ const showCompleted = () => {
     updateList(filter);
 }
 
-const filterTask = () => {
-    filterAll.addEventListener("click", () => {
-        showAll();
-        filterAll.classList.add("active");
-        filterActive.classList.remove("active");
-        filterCompleted.classList.remove("active");
-    });
+const filterTask = (filter, button) => {
 
-    filterActive.addEventListener("click", () => {
-        showActive();
-        filterAll.classList.remove("active");
-        filterActive.classList.add("active");
-        filterCompleted.classList.remove("active");
-    });
+    let taskList = todoList;
 
-    filterCompleted.addEventListener("click", () => {
-        showCompleted();
-        filterAll.classList.remove("active");
-        filterActive.classList.remove("active");
-        filterCompleted.classList.add("active");
-    });
+    switch (filter) {
+        case "all":
+            showAll(taskList);
+            break;
+
+        case "active":
+            showActive(taskList);
+            break;
+
+        case "completed":
+            showCompleted(taskList);
+            break;
+    }
+
+    button.classList.add("active");
 }
 
 export default filterTask;

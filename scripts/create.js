@@ -1,8 +1,18 @@
-import todoList from "./todoList.js";
+import todoList from "./todo-list.js";
+import completeTask from "./complete.js";
+import filterTask from "./filter.js";
 
 const formCreate = document.querySelector(".j_create");
 const taskList = document.querySelector(".j_list");
 const emptyTaskList = document.querySelector(".j_empty");
+
+const filterAll = document.querySelector(".j_filter_all");
+const filterActive = document.querySelector(".j_filter_active");
+const filterCompleted = document.querySelector(".j_filter_completed");
+
+const setComplete = (check, position) => {
+    completeTask(check, position);
+}
 
 const taskElement = (taskText, isCompleted) => {
     let element = document.createElement("li");
@@ -44,14 +54,40 @@ const createTask = () => {
         event.preventDefault();
         let newTask = formCreate.querySelector("#new_task");
         let completeTask = formCreate.querySelector("#new_complete");
-
+        
         emptyTaskList.remove();
-        taskList.append(taskElement(newTask.value, completeTask.checked));
 
-        todoList.push(taskElement(newTask.value, completeTask.checked));
+        let task = taskElement(newTask.value, completeTask.checked);
+        let complete = task.querySelectorAll(".complete");
+
+        taskList.append(task);
+        todoList.push(task);
         newTask.value = "";
+        filterAll.classList.add("active");
 
-        console.log(taskElement(newTask.value, completeTask.checked));
+        complete.forEach((item, i) => {
+            item.addEventListener("click", () => {
+                setComplete(item, i);
+            })
+        })
+
+        filterAll.addEventListener("click", () => {
+            filterActive.classList.remove("active");
+            filterCompleted.classList.remove("active");
+            filterTask("all", filterAll);
+        })
+
+        filterActive.addEventListener("click", () => {
+            filterAll.classList.remove("active");
+            filterCompleted.classList.remove("active");
+            filterTask("active", filterActive);
+        })
+
+        filterCompleted.addEventListener("click", () => {
+            filterAll.classList.remove("active");
+            filterActive.classList.remove("active");
+            filterTask("completed", filterCompleted);
+        })
     })
 }
 
