@@ -49,6 +49,7 @@ const createTask = () => {
         taskList.append(taskElement(newTask.value, completeTask.checked));
 
         todoList.push(taskElement(newTask.value, completeTask.checked));
+        newTask.value = "";
 
         console.log(taskElement(newTask.value, completeTask.checked));
     })
