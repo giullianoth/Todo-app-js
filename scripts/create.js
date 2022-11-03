@@ -1,3 +1,5 @@
+import todoList from "./todoList.js";
+
 const formCreate = document.querySelector(".j_create");
 const taskList = document.querySelector(".j_list");
 const emptyTaskList = document.querySelector(".j_empty");
@@ -45,6 +47,8 @@ const createTask = () => {
 
         emptyTaskList.remove();
         taskList.append(taskElement(newTask.value, completeTask.checked));
+
+        todoList.push(taskElement(newTask.value, completeTask.checked));
 
         console.log(taskElement(newTask.value, completeTask.checked));
     })

@@ -304,10 +304,6 @@ body button:hover {
 .main_app_content_tasks_list li.empty {
   font-size: 1.2em;
   color: hsl(233deg, 14%, 35%);
-  border-bottom: none;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
 }
 .main_app_content_actions {
   background-color: hsl(235deg, 24%, 19%);

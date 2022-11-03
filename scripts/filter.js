@@ -1,6 +1,7 @@
+import todoList from "./todoList.js";
+
 const task = document.querySelectorAll(".j_task");
 const list = document.querySelector(".j_list");
-let filter = [];
 
 const filterAll = document.querySelector(".j_filter_all");
 const filterActive = document.querySelector(".j_filter_active");
@@ -14,12 +15,12 @@ const updateList = (tasks) => {
 }
 
 const showAll = () => {
-    updateList(task);
+    updateList(todoList);
 }
 
 const showActive = () => {
-    filter = [];
-    task.forEach(item => {
+    let filter = [];
+    todoList.forEach(item => {
         if (!item.classList.contains("completed")) {
             filter.push(item);
         }
@@ -29,8 +30,8 @@ const showActive = () => {
 }
 
 const showCompleted = () => {
-    filter = [];
-    task.forEach(item => {
+    let filter = [];
+    todoList.forEach(item => {
         if (item.classList.contains("completed")) {
             filter.push(item);
         }
