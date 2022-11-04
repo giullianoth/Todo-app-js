@@ -1,5 +1,4 @@
 import listCount from "./list-count.js";
-import loadList from "./load-list.js";
 import todoList from "./todo-list.js";
 
 const emptyArea = () => {

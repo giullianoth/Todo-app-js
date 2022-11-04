@@ -1,4 +1,5 @@
 import completeTask from "./complete.js";
+import { clearTask } from "./delete.js";
 import listCount from "./list-count.js";
 import todoList from "./todo-list.js";
 
@@ -25,6 +26,15 @@ const loadList = (task) => {
     checkComplete.forEach((check, i) => {
         check.addEventListener("click", () => {
             completeTask(check, i);
+        })
+    })
+
+    // Delete Task
+    let deleteTaskBtn = list.querySelectorAll(".j_delete");
+
+    deleteTaskBtn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            clearTask(btn.parentNode);
         })
     })
 }
