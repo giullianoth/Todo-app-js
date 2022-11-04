@@ -38,6 +38,11 @@ body .img_background {
   z-index: -1;
   transition: all 0.3s ease 0s;
 }
+@media screen and (min-width: 500px) {
+  body .img_background {
+    background-image: url("../../images/bg-desktop-dark.jpg");
+  }
+}
 body.light_theme {
   background-color: hsl(0deg, 0%, 98%);
   color: hsl(235deg, 19%, 35%);
@@ -47,6 +52,11 @@ body.light_theme .img_background {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+}
+@media screen and (min-width: 500px) {
+  body.light_theme .img_background {
+    background-image: url("../../images/bg-desktop-light.jpg");
+  }
 }
 body.light_theme input[type=text] {
   color: hsl(236deg, 9%, 61%);
