@@ -1,4 +1,5 @@
 import completeTask from "./complete.js";
+import listCount from "./list-count.js";
 import todoList from "./todo-list.js";
 
 const loadList = (task) => {
@@ -16,14 +17,7 @@ const loadList = (task) => {
     }
 
     //Todo count
-    let todoCount = todoList.length;
-    let todoCountArea = document.querySelector(".j_count");
-    
-    if (todoCount > 0) {
-        todoCountArea.innerHTML = `${todoCount} ${todoCount === 1 ? "item" : "items"} left`;
-    } else {
-        todoCountArea.innerText = "No items";
-    }
+    listCount();
 
     // Checbox - Complete task
     let checkComplete = list.querySelectorAll(".j_complete");

@@ -1,5 +1,14 @@
+import listCount from "./list-count.js";
 import loadList from "./load-list.js";
 import todoList from "./todo-list.js";
+
+const emptyArea = () => {
+    let empty = document.createElement("li");
+    empty.classname = "empty j_empty";
+    empty.innerText = "Your todo will appear here";
+
+    return empty.outerHTML;
+}
 
 const clearTask = (task) => {
     task.style.maxHeight = "0";
@@ -13,6 +22,7 @@ const clearTask = (task) => {
 
 const clearCompleted = () => {
     let tasks = document.querySelectorAll(".j_task");
+    let list = document.querySelector(".j_list");
 
     tasks.forEach((task, i) => {
         if (task.classList.contains("completed")) {
@@ -21,7 +31,11 @@ const clearCompleted = () => {
         }
     })
 
-    console.log(todoList, tasks);
+    if (todoList.length === 0) {
+        list.innerHTML = emptyArea();
+    }
+
+    listCount();
 }
 
 export { clearTask, clearCompleted };
