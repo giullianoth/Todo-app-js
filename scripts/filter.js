@@ -1,16 +1,4 @@
-import { clearTask } from "./delete.js";
-import loadList from "./load-list.js";
-import todoList from "./todo-list.js";
-
 const filterBtn = document.querySelectorAll(".j_filter");
-
-const updateList = (tasks) => {
-    let list = document.querySelector(".j_list");
-    list.innerHTML = "";
-    tasks.forEach((item) => {
-        list.append(item);
-    })
-}
 
 const filterTask = () => {
 
