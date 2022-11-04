@@ -12,34 +12,6 @@ const updateList = (tasks) => {
     })
 }
 
-const showAll = (list) => {
-    updateList(list);
-}
-
-const showActive = (list) => {
-
-    let filter = [];
-    list.forEach((item) => {
-        if (!item.classList.contains("completed")) {
-            filter.push(item);
-        }
-    });
-
-    updateList(filter);
-}
-
-const showCompleted = (list) => {
-
-    let filter = [];
-    list.forEach((item) => {
-        if (item.classList.contains("completed")) {
-            filter.push(item);
-        }
-    });
-
-    updateList(filter);
-}
-
 const filterTask = () => {
 
     filterBtn.forEach((btn, i, arr) => {
