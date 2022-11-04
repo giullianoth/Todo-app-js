@@ -3,7 +3,7 @@ import { clearTask } from "./delete.js";
 import listCount from "./list-count.js";
 import todoList from "./todo-list.js";
 
-const showTask = (task, list) => {
+const showTask = (task, list, filter = false) => {
     let emptyList = document.querySelector(".j_empty");
 
     if (emptyList && task) {
@@ -13,8 +13,7 @@ const showTask = (task, list) => {
     task.style.maxHeight = "0";
     task.style.paddingTop = "0";
     task.style.paddingBottom = "0";
-
-    todoList.push(task.outerHTML);
+    
     list.append(task);
 
     setTimeout(() => {
@@ -22,6 +21,10 @@ const showTask = (task, list) => {
         task.style.paddingTop = "";
         task.style.paddingBottom = "";
     }, 100);
+
+    if (!filter) {
+        todoList.push(task.outerHTML);
+    }
 }
 
 const loadList = (task) => {
