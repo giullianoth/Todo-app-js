@@ -33,6 +33,10 @@ body {
         z-index: -1;
 
         @include transition;
+
+        @include setResponsiveDesign(500px) {
+            background-image: url("../../images/bg-desktop-dark.jpg");
+        }
     }
 
     &.light_theme {
@@ -41,6 +45,10 @@ body {
 
         .img_background {
             @include backgroundImage("../../images/bg-mobile-light.jpg");
+
+            @include setResponsiveDesign(500px) {
+                background-image: url("../../images/bg-desktop-light.jpg");
+            }
         }
 
         input[type="text"] {
