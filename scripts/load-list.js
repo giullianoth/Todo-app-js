@@ -3,19 +3,36 @@ import { clearTask } from "./delete.js";
 import listCount from "./list-count.js";
 import todoList from "./todo-list.js";
 
-const loadList = (task) => {
-
-    let list = document.querySelector(".j_list");
+const showTask = (task, list) => {
     let emptyList = document.querySelector(".j_empty");
 
     if (emptyList && task) {
         emptyList.remove();
     }
 
-    if (task) {        
-        todoList.push(task.outerHTML);
-        list.innerHTML = todoList.join("");
+    task.style.maxHeight = "0";
+    task.style.paddingTop = "0";
+    task.style.paddingBottom = "0";
+
+    todoList.push(task.outerHTML);
+    list.append(task);
+
+    setTimeout(() => {
+        task.style.maxHeight = "";
+        task.style.paddingTop = "";
+        task.style.paddingBottom = "";
+    }, 100);
+}
+
+const loadList = (task) => {
+
+    let list = document.querySelector(".j_list");
+
+    if (task) {
+        showTask(task, list);
     }
+
+    document.querySelector(".j_filter_all").classList.add("active");
 
     //Todo count
     listCount();
@@ -32,9 +49,9 @@ const loadList = (task) => {
     // Delete Task
     let deleteTaskBtn = list.querySelectorAll(".j_delete");
 
-    deleteTaskBtn.forEach((btn) => {
+    deleteTaskBtn.forEach((btn, i) => {
         btn.addEventListener("click", () => {
-            clearTask(btn.parentNode);
+            clearTask(btn.parentNode, i);
         })
     })
 }

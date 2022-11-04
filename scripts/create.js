@@ -16,6 +16,9 @@ const createTaskElement = (taskText, isCompleted) => {
     checkInput.className = "j_complete";
     checkIcon.className = "fa-solid fa-check";
 
+    checkInput.setAttribute("title", "Complete this task");
+    del.setAttribute("title", "Delete this task");
+
     if (isCompleted) {
         checkInput.setAttribute("checked", isCompleted);
     }
@@ -40,14 +43,18 @@ const createTaskElement = (taskText, isCompleted) => {
 }
 
 const createTask = () => {
+
+    let taskValue = formCreate.querySelector("#new_task");
+    let taskCompleted = formCreate.querySelector("#new_complete");
+
+    taskCompleted.addEventListener("click", () => { taskValue.focus(); })
+
     formCreate.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        let taskValue = formCreate.querySelector("#new_task");
-        let taskCompleted = formCreate.querySelector("#new_complete").checked;
-        
-        loadList(createTaskElement(taskValue.value, taskCompleted));
+        loadList(createTaskElement(taskValue.value, taskCompleted.checked));
         taskValue.value = "";
+        taskCompleted.removeAttribute("checked");
     })
 }
 
