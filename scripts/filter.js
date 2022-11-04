@@ -36,25 +36,8 @@ const showCompleted = (list) => {
     updateList(filter);
 }
 
-const filterTask = (filter, button) => {
-
-    let taskList = todoList;
-
-    switch (filter) {
-        case "all":
-            showAll(taskList);
-            break;
-
-        case "active":
-            showActive(taskList);
-            break;
-
-        case "completed":
-            showCompleted(taskList);
-            break;
-    }
-
-    button.classList.add("active");
+const filterTask = () => {
+    
 }
 
 export default filterTask;

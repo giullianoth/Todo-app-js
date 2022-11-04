@@ -12,7 +12,7 @@ const loadList = (task) => {
 
     if (task) {        
         todoList.push(task.outerHTML);
-        list.innerHTML = todoList.toString();
+        list.innerHTML = todoList.join("");
     }
 
     //Todo count
@@ -33,8 +33,6 @@ const loadList = (task) => {
             completeTask(check, i);
         })
     })
-
-    console.log(todoList);
 }
 
 export default loadList;

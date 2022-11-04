@@ -43,11 +43,11 @@ const createTask = () => {
     formCreate.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        let taskValue = formCreate.querySelector("#new_task").value;
+        let taskValue = formCreate.querySelector("#new_task");
         let taskCompleted = formCreate.querySelector("#new_complete").checked;
         
-        loadList(createTaskElement(taskValue, taskCompleted));
-        console.log(createTaskElement(taskValue, taskCompleted));
+        loadList(createTaskElement(taskValue.value, taskCompleted));
+        taskValue.value = "";
     })
 }
 

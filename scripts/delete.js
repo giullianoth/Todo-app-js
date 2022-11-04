@@ -1,9 +1,6 @@
 import loadList from "./load-list.js";
 import todoList from "./todo-list.js";
 
-const btnDelete = document.querySelectorAll(".j_delete");
-const task = document.querySelectorAll(".j_task");
-
 const clearTask = (task) => {
     task.style.maxHeight = "0";
     task.style.paddingTop = "0";
@@ -12,23 +9,19 @@ const clearTask = (task) => {
     setTimeout(() => {
         task.remove();
     }, 300);
-
-
 }
 
 const clearCompleted = () => {
-    let tasks = document.querySelectorAll(".j_task.completed");
-    
-    tasks.forEach((task) => {
-        console.log(task);
-        clearTask(task);
+    let tasks = document.querySelectorAll(".j_task");
+
+    tasks.forEach((task, i) => {
+        if (task.classList.contains("completed")) {
+            clearTask(task);
+            todoList.splice(i, 1);
+        }
     })
 
-    todoList.forEach((task) => {
-        loadList(task);
-    })
-
-    console.log(todoList);
+    console.log(todoList, tasks);
 }
 
 export { clearTask, clearCompleted };
