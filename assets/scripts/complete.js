@@ -1,17 +1,8 @@
-import todoList from "./todo-list.js";
+import { toggleClass } from "./variables.js";
 
-const completeTask = (check, position) => {
-    let task = document.querySelectorAll(".j_task");
-    let taskCheck = task[position].querySelector(".j_complete");
-
-    if (check.checked) {
-        task[position].classList.add("completed");
-        taskCheck.setAttribute("checked", true);
-    } else {
-        task[position].classList.remove("completed");
-    }
-
-    todoList[position] = task[position].outerHTML;
+const Complete = (event) => {
+    let taskElement = ((event.target.parentNode).parentNode).parentNode;
+    toggleClass(taskElement, "completed");
 }
 
-export default completeTask;
+export default Complete;

@@ -23,7 +23,7 @@
                 }
 
                 input[type="text"] {
-                    @include flexBasis(calc(100% - 18px  - 10px));
+                    @include flexBasis(calc(100% - 18px - 10px));
                 }
             }
         }
@@ -37,20 +37,12 @@
 
             &_list {
                 font-size: 0.7em;
+                @include transition;
 
                 li {
                     list-style: none;
                     padding: 20px;
-
-                    @include flex;
-                    gap: 10px;
                     border-bottom: 1px solid $color-very-dark-grayish-blue-3;
-                    cursor: default;
-                    height: auto;
-                    max-height: 60px;
-                    overflow: hidden;
-
-                    @include transition;
 
                     &:hover {
                         .delete {
@@ -61,49 +53,6 @@
                                 color: $color-very-dark-grayish-blue-2;
                             }
                         }
-
-                        input[type="checkbox"] {
-                            border-color: transparent;
-                            border-style: double;
-
-                            background-image:
-                                linear-gradient(45deg, $color-very-dark-desaturated-blue, $color-very-dark-desaturated-blue),
-                                linear-gradient(45deg, $color-check-background);
-
-                            @include setBrowsers(background-origin, border-box);
-                            @include setBrowsers(background-clip, (padding-box, border-box));
-
-                            &:checked {
-                                background-image: linear-gradient(45deg, $color-check-background) !important;
-                            }
-                        }
-                    }
-
-                    .complete {
-                        @include flexBasis(18px);
-                        @include relative;
-
-                        i {
-                            @include absolute(50%, 50%);
-                            transform: translate(-50%, -50%);
-                            font-size: 0.8em;
-                            visibility: hidden;
-                            opacity: 0;
-                            cursor: pointer;
-                            color: $color-white;
-                            @include transition;
-                        }
-
-                        input[type="checkbox"] {
-                            &:checked ~ i {
-                                visibility: visible;
-                                opacity: 1;
-                            }
-                        }
-                    }
-
-                    .task {
-                        @include flexBasis(calc(100% - (18px * 2) - (10px * 2)));
                     }
 
                     .delete {
@@ -122,6 +71,12 @@
                         }
                     }
 
+                    &.empty {
+                        font-size: 1.2em;
+                        color: $color-very-dark-grayish-blue-2;
+                        text-align: center;
+                    }
+
                     &.completed {
                         .task {
                             color: $color-very-dark-grayish-blue-2;
@@ -129,9 +84,56 @@
                         }
                     }
 
-                    &.empty {
-                        font-size: 1.2em;
-                        color: $color-very-dark-grayish-blue-2;
+                    .task_content {
+                        @include flex;
+                        gap: 10px;
+                        cursor: default;
+
+                        &:hover {
+
+                            input[type="checkbox"] {
+                                border-color: transparent;
+                                border-style: double;
+
+                                background-image:
+                                    linear-gradient(45deg, $color-very-dark-desaturated-blue, $color-very-dark-desaturated-blue),
+                                    linear-gradient(45deg, $color-check-background);
+
+                                @include setBrowsers(background-origin, border-box);
+                                @include setBrowsers(background-clip, (padding-box, border-box));
+
+                                &:checked {
+                                    background-image: linear-gradient(45deg, $color-check-background) !important;
+                                }
+                            }
+                        }
+
+                        .complete {
+                            @include flexBasis(18px);
+                            @include relative;
+
+                            i {
+                                @include absolute(50%, 50%);
+                                transform: translate(-50%, -50%);
+                                font-size: 0.8em;
+                                visibility: hidden;
+                                opacity: 0;
+                                cursor: pointer;
+                                color: $color-white;
+                                @include transition;
+                            }
+
+                            input[type="checkbox"] {
+                                &:checked~i {
+                                    visibility: visible;
+                                    opacity: 1;
+                                }
+                            }
+                        }
+
+                        .task {
+                            @include flexBasis(calc(100% - (18px * 2) - (10px * 2)));
+                        }
                     }
                 }
             }

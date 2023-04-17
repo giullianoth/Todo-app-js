@@ -1,60 +1,51 @@
-import todoList from "./todo-list.js";
-import filterTask from "./filter.js";
-import loadList from "./load-list.js";
+import Complete from "./complete.js";
+import { slideDown } from "./effects.js";
+import { allTasks, completeBtn, completeCheckElement, completedTasks, emptyMessage, formCreate, getElement, notCompletedTasks, taskInputElement, taskList } from "./variables.js";
 
-const formCreate = document.querySelector(".j_create");
+const taskElement = (newTask, completed) => {
+    let task = document.createElement("li");
+    task.className = `j_task${completed ? " completed" : ""}`;
 
-const createTaskElement = (taskText, isCompleted) => {
-    let element = document.createElement("li");
-    let check = document.createElement("label");
-    let task = document.createElement("p");
-    let del = document.createElement("div");
+    task.innerHTML = `        
+        <div class="task_content">
+            <label class="complete">
+                <input type="checkbox" class="j_complete" title="${completed ? "Set as no-completed" : "Complete this task"}"${completed ? " checked" : ""}>
+                <i class="fa-solid fa-check"></i>
+            </label>
+        
+                <p class="task">${newTask}</p>
+        
+            <div title="Delete this task" class="delete j_delete">
+                <i class="fa-solid fa-xmark"></i>
+            </div>        
+        </div>
+    `;
 
-    let checkInput = document.createElement("input");
-    let checkIcon = document.createElement("i");
-    checkInput.setAttribute("type", "checkbox");
-    checkInput.className = "j_complete";
-    checkIcon.className = "fa-solid fa-check";
-
-    checkInput.setAttribute("title", "Complete this task");
-    del.setAttribute("title", "Delete this task");
-
-    if (isCompleted) {
-        checkInput.setAttribute("checked", isCompleted);
-    }
-
-    let deleteIcon = document.createElement("i");
-    deleteIcon.className = "fa-solid fa-xmark";
-
-    let completeCkecked = isCompleted ? " completed" : "";
-
-    element.className = `j_task${completeCkecked}`;
-    check.className = "complete";
-    task.className = "task";
-    del.className = "delete j_delete";
-
-    check.innerHTML = checkInput.outerHTML + checkIcon.outerHTML;
-    task.innerText = taskText;
-    del.innerHTML = deleteIcon.outerHTML;
-
-    element.innerHTML = check.outerHTML + task.outerHTML + del.outerHTML;
-
-    return element;
+    return task;
 }
 
 const createTask = () => {
 
-    let taskValue = formCreate.querySelector("#new_task");
-    let taskCompleted = formCreate.querySelector("#new_complete");
-
-    taskCompleted.addEventListener("click", () => { taskValue.focus(); })
+    completeCheckElement.addEventListener("click", () => taskInputElement.focus());
 
     formCreate.addEventListener("submit", (event) => {
         event.preventDefault();
+        let newTask = taskInputElement.value;
 
-        loadList(createTaskElement(taskValue.value, taskCompleted.checked));
-        taskValue.value = "";
-        taskCompleted.removeAttribute("checked");
+        if (newTask.length > 0) {
+            if (emptyMessage()) {
+                emptyMessage().remove();
+            }
+
+            let newTaskElement = taskElement(newTask, completeCheckElement.checked);
+            
+            taskList().append(newTaskElement);
+            slideDown(newTaskElement);
+
+            taskInputElement.value = "";
+
+            completeBtn().forEach((btn) => btn.addEventListener("click", Complete));
+        }
     })
 }
 
