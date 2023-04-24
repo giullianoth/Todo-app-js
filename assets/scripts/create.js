@@ -1,6 +1,6 @@
 import Complete from "./complete.js";
 import { slideDown } from "./effects.js";
-import { allTasks, completeBtn, completeCheckElement, completedTasks, emptyMessage, formCreate, getElement, notCompletedTasks, taskInputElement, taskList } from "./variables.js";
+import { completeBtn, completeCheckElement, emptyMessage, formCreate, taskInputElement, taskList } from "./variables.js";
 
 const taskElement = (newTask, completed) => {
     let task = document.createElement("li");
@@ -13,7 +13,7 @@ const taskElement = (newTask, completed) => {
                 <i class="fa-solid fa-check"></i>
             </label>
         
-                <p class="task">${newTask}</p>
+            <p class="task">${newTask}</p>
         
             <div title="Delete this task" class="delete j_delete">
                 <i class="fa-solid fa-xmark"></i>
