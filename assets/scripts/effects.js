@@ -1,9 +1,6 @@
-import { setStyle } from "./variables.js";
+import { setStyle, transitionDuration, transitionGap } from "./variables.js";
 
-const transitionDurationDefault = 300;
-const transitionGap = 10;
-
-const transitionProps = (property = "all", duration = `${transitionDurationDefault / 1000}s`, timingFunction = "ease", delay = "0s") =>
+const transitionProps = (property = "all", duration = `${transitionDuration / 1000}s`, timingFunction = "ease", delay = "0s") =>
     `${property} ${duration} ${timingFunction} ${delay}`;
 
 const slideDown = (element, displayElement = "block") => {
@@ -17,22 +14,45 @@ const slideDown = (element, displayElement = "block") => {
     setStyle(element, "maxHeight", 0);
     setStyle(element, "paddingTop", 0);
     setStyle(element, "paddingBottom", 0);
+    setStyle(element, "borderTopWidth", 0);
+    setStyle(element, "borderBottomWidth", 0);
 
     setTimeout(() => {
         setStyle(element, "transition", transitionProps());
         setStyle(element, "maxHeight", `${maxHeight}px`);
         setStyle(element, "paddingTop", "");
         setStyle(element, "paddingBottom", "");
+        setStyle(element, "borderTopWidth", "");
+        setStyle(element, "borderBottomWidth", "");
 
         setTimeout(() => {
             setStyle(element, "overflow", "");
             setStyle(element, "transition", "");
-        }, transitionDurationDefault);
+        }, transitionDuration);
     }, transitionGap);
 }
 
 const slideUp = (element, removeElement = false) => {
+    
+    setStyle(element, "transition", transitionProps());
+    setStyle(element, "overflow", "hidden");
+    setStyle(element, "maxHeight", 0);
+    setStyle(element, "paddingTop", 0);
+    setStyle(element, "paddingBottom", 0);
+    setStyle(element, "borderTopWidth", 0);
+    setStyle(element, "borderBottomWidth", 0);
 
+    setTimeout(() => {
+        setStyle(element, "display", "");
+        setStyle(element, "maxHeight", "");
+        setStyle(element, "paddingTop", "");
+        setStyle(element, "paddingBottom", "");
+        setStyle(element, "borderTopWidth", "");
+        setStyle(element, "borderBottomWidth", "");
+        setStyle(element, "overflow", "");
+        setStyle(element, "transition", "");
+        removeElement && element.remove();
+    }, transitionDuration);
 }
 
 export { slideDown, slideUp };

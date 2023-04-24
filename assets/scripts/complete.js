@@ -1,7 +1,7 @@
-import { elementContainsClass, getElement, toggleClass } from "./variables.js";
+import { elementContainsClass, getElement, getTask, toggleClass } from "./variables.js";
 
-const Complete = (event) => {
-    let taskElement = ((event.target.parentNode).parentNode).parentNode;
+const CompleteTask = (event) => {
+    let taskElement = getTask(event.target);
     let checkElement = getElement(".j_complete", taskElement);
 
     toggleClass(taskElement, "completed");
@@ -12,4 +12,4 @@ const Complete = (event) => {
     );
 }
 
-export default Complete;
+export default CompleteTask;

@@ -1,6 +1,8 @@
-import Complete from "./complete.js";
+import CompleteTask from "./complete.js";
+import countTask from "./count.js";
+import { DeleteCompleted, DeleteTask } from "./delete.js";
 import { slideDown } from "./effects.js";
-import { completeBtn, completeCheckElement, emptyMessage, formCreate, taskInputElement, taskList } from "./variables.js";
+import { allTasksQt, clearCompleted, completeBtn, completeCheckElement, deleteBtn, emptyMessage, formCreate, taskInputElement, taskList } from "./variables.js";
 
 const taskElement = (newTask, completed) => {
     let task = document.createElement("li");
@@ -13,10 +15,10 @@ const taskElement = (newTask, completed) => {
                 <i class="fa-solid fa-check"></i>
             </label>
         
-            <p class="task">${newTask}</p>
+            <p class="task" title="Double click to edit">${newTask}</p>
         
-            <div title="Delete this task" class="delete j_delete">
-                <i class="fa-solid fa-xmark"></i>
+            <div title="Delete this task" class="delete">
+                <i class="fa-solid fa-xmark j_delete"></i>
             </div>        
         </div>
     `;
@@ -44,7 +46,11 @@ const createTask = () => {
 
             taskInputElement.value = "";
 
-            completeBtn().forEach((btn) => btn.addEventListener("click", Complete));
+            completeBtn().forEach((btn) => btn.addEventListener("click", CompleteTask));
+            deleteBtn().forEach((btn) => btn.addEventListener("click", DeleteTask));
+            clearCompleted.addEventListener("click", DeleteCompleted);
+
+            countTask(allTasksQt());
         }
     })
 }

@@ -17,6 +17,9 @@ const elementContainsClass = (element, className) => element.classList.contains(
 
 const computedStyle = (element, attr) => window.getComputedStyle(element)[attr];
 
+const transitionDuration = 300;
+const transitionGap = 10;
+
 // TASKS
 const emptyMessage = () => getElement(".j_empty");
 const taskList = () => getElement(".j_list");
@@ -33,15 +36,23 @@ const allTasksQt = () => allTasks().length;
 const notCompletedTasksQt = () => notCompletedTasks().length;
 const completedTasksQt = () => completedTasks().length;
 
+const countArea = getElement(".j_count");
+
+const getTask = (target) => ((target.parentNode).parentNode).parentNode;
+
 const completeBtn = () =>  normalArray(getElements(".j_complete"));
+const deleteBtn = () => normalArray(getElements(".j_delete"));
+
+const clearCompleted = getElement(".j_clear_completed");
 
 export {
     getElement, getElements, normalArray,
     setStyle, addClass, removeClass, toggleClass, elementContainsClass, computedStyle,
+    transitionDuration, transitionGap,
 
     emptyMessage, taskList,
     formCreate, completeCheckElement, taskInputElement,
     allTasks, notCompletedTasks, completedTasks,
-    allTasksQt, notCompletedTasksQt, completedTasksQt,
-    completeBtn,
+    allTasksQt, notCompletedTasksQt, completedTasksQt, countArea, getTask,
+    completeBtn, deleteBtn, clearCompleted,
 }
