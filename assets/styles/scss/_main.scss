@@ -78,14 +78,14 @@
                     }
 
                     &.completed {
-                        .task {
+                        .task:not(:has(input)) {
                             color: $color-very-dark-grayish-blue-2;
                             text-decoration: line-through;
                         }
                     }
 
                     .task_content {
-                        @include flex;
+                        @include flex(center, center, nowrap);
                         gap: 10px;
                         cursor: default;
 
@@ -133,6 +133,14 @@
 
                         .task {
                             @include flexBasis(calc(100% - (18px * 2) - (10px * 2)));
+                            width: 100%;
+
+                            input {
+                                font-size: 1em;
+                                border-bottom: 1px solid $color-very-dark-grayish-blue-3;
+                                width: 100%;
+                                display: block;
+                            }
                         }
                     }
                 }

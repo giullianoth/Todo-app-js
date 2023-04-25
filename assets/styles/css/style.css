@@ -258,7 +258,7 @@ body button:hover {
   color: hsl(233, 14%, 35%);
   text-align: center;
 }
-.main_app_content_tasks_list li.completed .task {
+.main_app_content_tasks_list li.completed .task:not(:has(input)) {
   color: hsl(233, 14%, 35%);
   text-decoration: line-through;
 }
@@ -266,7 +266,7 @@ body button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px;
   cursor: default;
 }
@@ -306,6 +306,13 @@ body button:hover {
 }
 .main_app_content_tasks_list li .task_content .task {
   flex-basis: calc(100% - 36px - 20px);
+  width: 100%;
+}
+.main_app_content_tasks_list li .task_content .task input {
+  font-size: 1em;
+  border-bottom: 1px solid hsl(237, 14%, 26%);
+  width: 100%;
+  display: block;
 }
 .main_app_content_actions {
   background-color: hsl(235, 24%, 19%);

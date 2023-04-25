@@ -2,7 +2,8 @@ import CompleteTask from "./complete.js";
 import countTask from "./count.js";
 import { DeleteCompleted, DeleteTask } from "./delete.js";
 import { slideDown } from "./effects.js";
-import { allTasksQt, clearCompleted, completeBtn, completeCheckElement, deleteBtn, emptyMessage, formCreate, taskInputElement, taskList } from "./variables.js";
+import UpdateTask from "./update.js";
+import { allTasksBtn, allTasksQt, clearCompleted, completeBtn, completeCheckElement, deleteBtn, emptyMessage, filter, formCreate, taskInputElement, taskList, tasks, tasksToUpdate } from "./variables.js";
 
 const taskElement = (newTask, completed) => {
     let task = document.createElement("li");
@@ -15,7 +16,7 @@ const taskElement = (newTask, completed) => {
                 <i class="fa-solid fa-check"></i>
             </label>
         
-            <p class="task" title="Double click to edit">${newTask}</p>
+            <p class="task j_update" title="Double click to edit">${newTask}</p>
         
             <div title="Delete this task" class="delete">
                 <i class="fa-solid fa-xmark j_delete"></i>
@@ -43,6 +44,7 @@ const createTask = () => {
             
             taskList().append(newTaskElement);
             slideDown(newTaskElement);
+            tasks.push(newTaskElement);
 
             taskInputElement.value = "";
 
@@ -50,6 +52,7 @@ const createTask = () => {
             deleteBtn().forEach((btn) => btn.addEventListener("click", DeleteTask));
             clearCompleted.addEventListener("click", DeleteCompleted);
 
+            tasksToUpdate().forEach((task) => task.addEventListener("dblclick", UpdateTask));
             countTask(allTasksQt());
         }
     })

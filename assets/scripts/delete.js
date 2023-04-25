@@ -29,8 +29,6 @@ const DeleteTask = (event) => {
 
     slideUp(taskToDelete, true);
 
-    console.log(taskList());
-
     setTimeout(() => {
         if (allTasksQt() === 0) {
             let empty = emptyElement();
