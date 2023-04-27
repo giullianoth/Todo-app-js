@@ -3,7 +3,7 @@ import countTask from "./count.js";
 import { DeleteCompleted, DeleteTask } from "./delete.js";
 import { slideDown } from "./effects.js";
 import UpdateTask from "./update.js";
-import { allTasksBtn, allTasksQt, clearCompleted, completeBtn, completeCheckElement, deleteBtn, emptyMessage, filter, formCreate, taskInputElement, taskList, tasks, tasksToUpdate } from "./variables.js";
+import { allTasksQt, clearCompleted, completeBtn, completeCheckElement, deleteBtn, emptyMessage, formCreate, taskInputElement, taskList, tasks, tasksToUpdate } from "./variables.js";
 
 const taskElement = (newTask, completed) => {
     let task = document.createElement("li");

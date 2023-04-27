@@ -43,7 +43,7 @@ const slideUp = (element, removeElement = false) => {
     setStyle(element, "borderBottomWidth", 0);
 
     setTimeout(() => {
-        setStyle(element, "display", "");
+        setStyle(element, "display", "none");
         setStyle(element, "maxHeight", "");
         setStyle(element, "paddingTop", "");
         setStyle(element, "paddingBottom", "");

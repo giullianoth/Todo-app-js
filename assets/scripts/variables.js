@@ -17,6 +17,8 @@ const elementContainsClass = (element, className) => element.classList.contains(
 
 const computedStyle = (element, attr) => window.getComputedStyle(element)[attr];
 
+const isVisible = (element) => computedStyle(element, "display") !== "none";
+
 const transitionDuration = 300;
 const transitionGap = 10;
 
@@ -60,7 +62,7 @@ const completedTasksBtn = filterBtn.find((btn) => elementContainsClass(btn, "j_f
 
 export {
     getElement, getElements, normalArray,
-    setStyle, addClass, removeClass, toggleClass, elementContainsClass, computedStyle,
+    setStyle, addClass, removeClass, toggleClass, elementContainsClass, computedStyle, isVisible,
     transitionDuration, transitionGap,
 
     tasks, filter, filterTasks,
