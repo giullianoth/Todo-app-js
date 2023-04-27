@@ -1,9 +1,9 @@
 import CompleteTask from "./complete.js";
 import countTask from "./count.js";
-import { DeleteCompleted, DeleteTask } from "./delete.js";
-import { slideDown } from "./effects.js";
+import { DeleteCompleted, DeleteTask, emptyElement } from "./delete.js";
+import { slideDown, slideUp } from "./effects.js";
 import UpdateTask from "./update.js";
-import { allTasksQt, clearCompleted, completeBtn, completeCheckElement, deleteBtn, emptyMessage, formCreate, taskInputElement, taskList, tasks, tasksToUpdate } from "./variables.js";
+import { clearCompleted, completeBtn, completeCheckElement, completedTasksQt, deleteBtn, emptyMessage, filter, formCreate, isCompletedTask, notCompletedTasksQt, taskInputElement, taskList, tasks, tasksToUpdate, transitionDuration, transitionGap } from "./variables.js";
 
 const taskElement = (newTask, completed) => {
     let task = document.createElement("li");
@@ -37,7 +37,7 @@ const createTask = () => {
 
         if (newTask.length > 0) {
             if (emptyMessage()) {
-                emptyMessage().remove();
+                slideUp(emptyMessage(), true);
             }
 
             let newTaskElement = taskElement(newTask, completeCheckElement.checked);
@@ -53,7 +53,20 @@ const createTask = () => {
             clearCompleted.addEventListener("click", DeleteCompleted);
 
             tasksToUpdate().forEach((task) => task.addEventListener("dblclick", UpdateTask));
-            countTask(allTasksQt());
+
+            setTimeout(() => {
+                if ((filter === "active" && isCompletedTask(newTaskElement)) || (filter === "completed" && !isCompletedTask(newTaskElement))) {
+                    slideUp(newTaskElement);
+
+                    if (!emptyMessage() && (completedTasksQt() === 0 || notCompletedTasksQt() === 0)) {
+                        let empty = emptyElement();
+                        taskList().append(empty);
+                        slideDown(empty);
+                    }
+                }
+            }, transitionDuration + transitionGap * 2);
+
+            countTask();
         }
     })
 }

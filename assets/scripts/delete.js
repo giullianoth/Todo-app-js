@@ -1,6 +1,6 @@
 import countTask from "./count.js";
 import { slideDown, slideUp } from "./effects.js";
-import { allTasksQt, completedTasks, filter, getTask, taskList, tasks, transitionDuration } from "./variables.js";
+import { allTasksQt, completedTasks, completedTasksQt, filter, getTask, taskList, tasks, transitionDuration } from "./variables.js";
 
 const emptyElement = () => {
     let empty = document.createElement("li");
@@ -11,20 +11,20 @@ const emptyElement = () => {
 
 const DeleteCompleted = () => {
     completedTasks().forEach((task) => {
-        tasks.splice(tasks.indexOf(task), 1);
-        slideUp(task, true);
+        if (tasks.length) {
+            tasks.splice(tasks.indexOf(task), 1);
+            slideUp(task, true);
+        }
     })
 
     setTimeout(() => {
-        if (allTasksQt() === 0) {
+        if ((filter !== "active" && allTasksQt() === 0) || (filter === "completed" && completedTasksQt() === 0)) {
             let empty = emptyElement();
             taskList().append(empty);
             slideDown(empty);
         }
 
-        filter === "all" && countTask(allTasksQt());
-        filter === "active" && countTask(allTasksQt());
-        filter === "completed" && countTask(allTasksQt());
+        countTask();
     }, transitionDuration);
 }
 
@@ -42,10 +42,8 @@ const DeleteTask = (event) => {
             slideDown(empty);
         }
 
-        filter === "all" && countTask(allTasksQt());
-        filter === "active" && countTask(allTasksQt());
-        filter === "completed" && countTask(allTasksQt());
+        countTask();
     }, transitionDuration);
 }
 
-export { DeleteCompleted, DeleteTask };
+export { DeleteCompleted, DeleteTask, emptyElement };

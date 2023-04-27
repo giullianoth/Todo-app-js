@@ -43,6 +43,8 @@ const allTasksQt = () => allTasks().length;
 const notCompletedTasksQt = () => notCompletedTasks().length;
 const completedTasksQt = () => completedTasks().length;
 
+const isCompletedTask = (task) => elementContainsClass(task, "completed");
+
 const countArea = getElement(".j_count");
 
 const getTask = (target) => ((target.parentNode).parentNode).parentNode;
@@ -69,7 +71,7 @@ export {
     emptyMessage, taskList,
     formCreate, completeCheckElement, taskInputElement,
     allTasks, notCompletedTasks, completedTasks,
-    allTasksQt, notCompletedTasksQt, completedTasksQt, countArea, getTask,
+    allTasksQt, notCompletedTasksQt, completedTasksQt, isCompletedTask, countArea, getTask,
     completeBtn, deleteBtn, clearCompleted,
     tasksToUpdate, updateForm,
     filterBtn, allTasksBtn, activeTasksBtn, completedTasksBtn,

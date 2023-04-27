@@ -1,6 +1,6 @@
-import { addClass, getElement, removeClass, setStyle, toggleClass } from "./variables.js";
+import { addClass, elementContainsClass, getElement, removeClass, setStyle, toggleClass } from "./variables.js";
 
-const btnThemeAttribute = (btn) => btn.setAttribute("title", (document.body.classList.contains("light_theme") ? "Change to dark theme" : "Change to light theme"));
+const btnThemeAttribute = (btn) => btn.setAttribute("title", (elementContainsClass(document.body, "light_theme") ? "Change to dark theme" : "Change to light theme"));
 
 const changeTheme = () => {
     const btnTheme = getElement(".j_theme");
