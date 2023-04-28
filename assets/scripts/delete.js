@@ -1,6 +1,6 @@
 import countTask from "./count.js";
 import { slideDown, slideUp } from "./effects.js";
-import { allTasksQt, completedTasks, completedTasksQt, filter, getTask, taskList, tasks, transitionDuration } from "./variables.js";
+import { addStoragedTask, allTasksQt, clearStoragedTasks, completedTasks, completedTasksQt, filter, getTask, storagedTasks, taskList, tasks, transitionDuration } from "./variables.js";
 
 const emptyElement = () => {
     let empty = document.createElement("li");
@@ -9,13 +9,24 @@ const emptyElement = () => {
     return empty;
 }
 
+const deleteStoraged = () => {
+    if (!tasks.length) {
+        clearStoragedTasks();
+    } else {
+        addStoragedTask();
+    }
+}
+
 const DeleteCompleted = () => {
     completedTasks().forEach((task) => {
         if (tasks.length) {
-            tasks.splice(tasks.indexOf(task), 1);
+            let taskToDelete = tasks.find((t) => t.element === task);
+            tasks.splice(tasks.indexOf(taskToDelete), 1);
             slideUp(task, true);
         }
     })
+
+    deleteStoraged();
 
     setTimeout(() => {
         if ((filter !== "active" && allTasksQt() === 0) || (filter === "completed" && completedTasksQt() === 0)) {
@@ -30,10 +41,12 @@ const DeleteCompleted = () => {
 
 const DeleteTask = (event) => {
     event.preventDefault();
-    let taskToDelete = getTask(event.target);
+    let taskToDelete = tasks.find((task) => task.element === getTask(event.target));
 
     tasks.splice(tasks.indexOf(taskToDelete), 1);
-    slideUp(taskToDelete, true);
+    slideUp(taskToDelete.element, true);
+
+    deleteStoraged();
 
     setTimeout(() => {
         if (allTasksQt() === 0) {

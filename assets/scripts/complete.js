@@ -1,7 +1,7 @@
 import countTask from "./count.js";
 import { emptyElement } from "./delete.js";
 import { slideDown, slideUp } from "./effects.js";
-import { completedTasksQt, filter, getElement, getTask, isCompletedTask, notCompletedTasksQt, taskList, toggleClass, transitionDuration } from "./variables.js";
+import { addStoragedTask, completedTasksQt, filter, getElement, getTask, isCompletedTask, notCompletedTasksQt, storagedTasks, taskList, tasks, toggleClass } from "./variables.js";
 
 const CompleteTask = (event) => {
     let taskElement = getTask(event.target);
@@ -13,6 +13,13 @@ const CompleteTask = (event) => {
         "title",
         isCompletedTask(taskElement) ? "Set as no-completed" : "Complete this task"
     );
+
+    tasks.forEach((task) => {
+        if (task.element === taskElement) {
+            task.completed = isCompletedTask(taskElement);
+            addStoragedTask();
+        }
+    })
 
     if (filter === "active") {
         isCompletedTask(taskElement) && slideUp(taskElement);

@@ -35,7 +35,7 @@ const filterTask = () => {
 
                 case "active":
                     completedTasks().forEach((task) => slideUp(task));
-                    tasks.forEach((task) => !isVisible(task) && !isCompletedTask(task) && slideDown(task));
+                    tasks.forEach((task) => !isVisible(task.element) && !isCompletedTask(task.element) && slideDown(task.element));
                     countTask();
 
                     setTimeout(() => {
@@ -49,7 +49,7 @@ const filterTask = () => {
 
                 case "completed":
                     notCompletedTasks().forEach((task) => slideUp(task));
-                    tasks.forEach((task) => !isVisible(task) && isCompletedTask(task) && slideDown(task));
+                    tasks.forEach((task) => !isVisible(task.element) && isCompletedTask(task.element) && slideDown(task.element));
                     countTask();
 
                     setTimeout(() => {
