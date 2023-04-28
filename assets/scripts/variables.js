@@ -28,6 +28,7 @@ const storagedTasks = localStorage;
 
 const addStoragedTask = () => storagedTasks.setItem("tasks", JSON.stringify(tasks));
 const clearStoragedTasks = () => storagedTasks.clear();
+const getStoragedTasks = () => JSON.parse(storagedTasks.getItem("tasks"));
 
 var filter = "all";
 const filterTasks = (filterBy) => filter = filterBy;
@@ -71,7 +72,7 @@ export {
     setStyle, addClass, removeClass, toggleClass, elementContainsClass, computedStyle, isVisible,
     transitionDuration, transitionGap,
 
-    tasks, storagedTasks, addStoragedTask, clearStoragedTasks, filter, filterTasks,
+    tasks, storagedTasks, addStoragedTask, clearStoragedTasks, getStoragedTasks, filter, filterTasks,
     emptyMessage, taskList,
     formCreate, completeCheckElement, taskInputElement,
     allTasks, notCompletedTasks, completedTasks,

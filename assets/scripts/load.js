@@ -1,19 +1,17 @@
 import CompleteTask from "./complete.js";
 import { taskElement } from "./create.js";
 import { DeleteCompleted, DeleteTask } from "./delete.js";
-import { clearCompleted, completeBtn, deleteBtn, emptyMessage, storagedTasks, taskList, tasks } from "./variables.js";
+import { clearCompleted, completeBtn, deleteBtn, emptyMessage, getStoragedTasks, storagedTasks, taskList, tasks } from "./variables.js";
 
 const LoadTasks = () => {
     
-    if (storagedTasks.getItem("tasks")) {
-
-        let data = JSON.parse(storagedTasks.getItem("tasks"));        
+    if (storagedTasks.getItem("tasks")) {      
 
         if (emptyMessage()) {
             emptyMessage().remove();
         }
         
-        data.forEach((item) => {
+        getStoragedTasks().forEach((item) => {
             tasks.push({
                 task: item.task,
                 completed: item.completed,
