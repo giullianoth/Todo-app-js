@@ -25,7 +25,7 @@ const UpdateTask = (event) => {
         let newTask = getElement("input", e.target).value;
 
         if (newTask.length > 0) {
-            event.target.innerText = newTask;
+            taskParagraph.innerText = newTask;
 
             tasks.forEach((task) => {
                 if (task.task === oldTask) {
