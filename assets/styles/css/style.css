@@ -427,8 +427,12 @@ body button:hover {
 .attribution {
   font-size: 11px;
   text-align: center;
+  padding: 0 20px;
 }
 .attribution a {
   color: hsl(220, 98%, 61%);
   text-decoration: none;
+}
+.attribution a:hover {
+  text-decoration: underline;
 }

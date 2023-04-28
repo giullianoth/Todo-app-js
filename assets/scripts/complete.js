@@ -14,27 +14,25 @@ const CompleteTask = (event) => {
         isCompletedTask(taskElement) ? "Set as no-completed" : "Complete this task"
     );
 
-    setTimeout(() => {
-        if (filter === "active") {
-            isCompletedTask(taskElement) && slideUp(taskElement);
+    if (filter === "active") {
+        isCompletedTask(taskElement) && slideUp(taskElement);
 
-            if (notCompletedTasksQt() === 0) {
-                let empty = emptyElement();
-                taskList().append(empty);
-                slideDown(empty);
-            }
-        } else if (filter === "completed") {
-            !isCompletedTask(taskElement) && slideUp(taskElement);
-
-            if (completedTasksQt() === 0) {
-                let empty = emptyElement();
-                taskList().append(empty);
-                slideDown(empty);
-            }
+        if (notCompletedTasksQt() === 0) {
+            let empty = emptyElement();
+            taskList().append(empty);
+            slideDown(empty);
         }
+    } else if (filter === "completed") {
+        !isCompletedTask(taskElement) && slideUp(taskElement);
 
-        countTask();
-    }, transitionDuration);
+        if (completedTasksQt() === 0) {
+            let empty = emptyElement();
+            taskList().append(empty);
+            slideDown(empty);
+        }
+    }
+
+    countTask();
 }
 
 export default CompleteTask;

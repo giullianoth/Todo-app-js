@@ -5,7 +5,7 @@ const countTask = () => {
 
     switch (filter) {
         case "all":
-                quantity = allTasksQt();
+            quantity = allTasksQt();
             break;
 
         case "active":
