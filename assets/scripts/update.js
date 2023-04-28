@@ -1,4 +1,4 @@
-import { getElement, updateForm } from "./variables.js";
+import { addStoragedTask, getElement, tasks, updateForm } from "./variables.js";
 
 const updateTaskForm = (value) => {
     let form = document.createElement("form");
@@ -15,7 +15,7 @@ const updateTaskForm = (value) => {
 
 const UpdateTask = (event) => {
     let taskParagraph = event.target;
-    let oldTask = event.target.innerText;
+    let oldTask = taskParagraph.innerText;
     
     taskParagraph.innerHTML = updateTaskForm(oldTask).outerHTML;
     getElement("input", updateForm()).focus();
@@ -26,6 +26,14 @@ const UpdateTask = (event) => {
 
         if (newTask.length > 0) {
             event.target.innerText = newTask;
+
+            tasks.forEach((task) => {
+                if (task.task === oldTask) {
+                    task.task = newTask;
+                }
+            })
+
+            addStoragedTask();
         }
     })
 }
