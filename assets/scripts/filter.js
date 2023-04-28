@@ -1,39 +1,66 @@
-const filterBtn = document.querySelectorAll(".j_filter");
+import countTask from "./count.js";
+import { emptyElement } from "./delete.js";
+import { slideDown, slideUp } from "./effects.js";
+import { activeTasksBtn, addClass, allTasks, allTasksBtn, allTasksQt, completedTasks, completedTasksBtn, completedTasksQt, emptyMessage, filter, filterBtn, filterTasks, isCompletedTask, isVisible, notCompletedTasks, notCompletedTasksQt, removeClass, taskList, tasks, transitionDuration, transitionGap } from "./variables.js";
 
 const filterTask = () => {
 
     filterBtn.forEach((btn, i, arr) => {
+
         btn.addEventListener("click", () => {
+            arr.forEach((item) => removeClass(item, "active"));
+            addClass(btn, "active");
 
-            arr.forEach(item => { item.classList.remove("active") })
-            btn.classList.add("active");
+            if (emptyMessage() && allTasksQt() > 0) {
+                slideUp(emptyMessage(), true);
+            }
 
-            let list = document.querySelector(".j_list");
-            let tasks = list.querySelectorAll(".j_task");
+            btn === allTasksBtn && filterTasks("all");
+            btn === activeTasksBtn && filterTasks("active");
+            btn === completedTasksBtn && filterTasks("completed");
 
-            tasks.forEach((task) => {
-                task.style.maxHeight = "0";
-                task.style.paddingTop = "0";
-                task.style.paddingBottom = "0";
-                task.style.visibility = "hidden";
+            switch (filter) {
+                case "all":
+                    allTasks().forEach((task) => !isVisible(task) && slideDown(task));
+                    countTask();                    
 
-                if (task.classList.contains("completed") && btn.classList.contains("j_filter_completed")) {
-                    task.style.maxHeight = "";
-                    task.style.paddingTop = "";
-                    task.style.paddingBottom = "";
-                    task.style.visibility = "";
-                } else if (!task.classList.contains("completed") && btn.classList.contains("j_filter_active")) {
-                    task.style.maxHeight = "";
-                    task.style.paddingTop = "";
-                    task.style.paddingBottom = "";
-                    task.style.visibility = "";
-                } else if (btn.classList.contains("j_filter_all")) {
-                    task.style.maxHeight = "";
-                    task.style.paddingTop = "";
-                    task.style.paddingBottom = "";
-                    task.style.visibility = "";
-                }
-            });
+                    setTimeout(() => {
+                        if (!emptyMessage() && allTasksQt() === 0) {
+                            let empty = emptyElement();
+                            taskList().append(empty);
+                            slideDown(empty);
+                        }
+                    }, transitionDuration + transitionGap);
+                    break;
+
+                case "active":
+                    completedTasks().forEach((task) => slideUp(task));
+                    tasks.forEach((task) => !isVisible(task.element) && !isCompletedTask(task.element) && slideDown(task.element));
+                    countTask();
+
+                    setTimeout(() => {
+                        if (!emptyMessage() && notCompletedTasksQt() === 0) {
+                            let empty = emptyElement();
+                            taskList().append(empty);
+                            slideDown(empty);
+                        }
+                    }, transitionDuration + transitionGap);
+                    break;
+
+                case "completed":
+                    notCompletedTasks().forEach((task) => slideUp(task));
+                    tasks.forEach((task) => !isVisible(task.element) && isCompletedTask(task.element) && slideDown(task.element));
+                    countTask();
+
+                    setTimeout(() => {
+                        if (!emptyMessage() && completedTasksQt() === 0) {
+                            let empty = emptyElement();
+                            taskList().append(empty);
+                            slideDown(empty);
+                        }
+                    }, transitionDuration + transitionGap);
+                    break;
+            }
         })
     })
 }

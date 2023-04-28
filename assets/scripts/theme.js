@@ -1,29 +1,33 @@
-const btnTheme = document.querySelector(".j_theme");
-const btnThemeIcon = btnTheme.querySelector("i");
+import { addClass, elementContainsClass, getElement, removeClass, setStyle, toggleClass } from "./variables.js";
+
+const btnThemeAttribute = (btn) => btn.setAttribute("title", (elementContainsClass(document.body, "light_theme") ? "Change to dark theme" : "Change to light theme"));
 
 const changeTheme = () => {
-    btnTheme.setAttribute("title", (document.body.classList.contains("light_theme") ? "Change to dark theme" : "Change to light theme"));
+    const btnTheme = getElement(".j_theme");
+    const btnThemeIcon = getElement("i", btnTheme);
+
+    btnThemeAttribute(btnTheme);
 
     btnTheme.addEventListener("click", () => {
-        document.body.classList.toggle("light_theme");
+        toggleClass(document.body, "light_theme")
 
-        btnThemeIcon.style.transform = "translateY(-150%)";
-        btnThemeIcon.style.opacity = "0";
+        setStyle(btnThemeIcon, "transform", "translateY(-150%)");
+        setStyle(btnThemeIcon, "opacity", 0);
 
         setTimeout(() => {
             if (document.body.classList.contains("light_theme")) {
-                btnThemeIcon.classList.remove("fa-sun");
-                btnThemeIcon.classList.add("fa-moon");
+                removeClass(btnThemeIcon, "fa-sun");
+                addClass(btnThemeIcon, "fa-moon");
             } else {
-                btnThemeIcon.classList.remove("fa-moon");
-                btnThemeIcon.classList.add("fa-sun");
+                removeClass(btnThemeIcon, "fa-moon");
+                addClass(btnThemeIcon, "fa-sun");
             }
-            
-            btnThemeIcon.style.transform = "";
-            btnThemeIcon.style.opacity = "";
+
+            setStyle(btnThemeIcon, "transform", "");
+            setStyle(btnThemeIcon, "opacity", "");
         }, 300);
 
-        btnTheme.setAttribute("title", (document.body.classList.contains("light_theme") ? "Change to dark theme" : "Change to light theme"));
+        btnThemeAttribute(btnTheme);
     })
 }
 

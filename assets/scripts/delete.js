@@ -1,43 +1,62 @@
-import listCount from "./list-count.js";
-import todoList from "./todo-list.js";
+import countTask from "./count.js";
+import { slideDown, slideUp } from "./effects.js";
+import { addStoragedTask, allTasksQt, clearStoragedTasks, completedTasks, completedTasksQt, filter, getTask, storagedTasks, taskList, tasks, transitionDuration } from "./variables.js";
 
-const emptyArea = () => {
+const emptyElement = () => {
     let empty = document.createElement("li");
     empty.className = "empty j_empty";
     empty.innerText = "Your todo will appear here";
-
-    return empty.outerHTML;
+    return empty;
 }
 
-const clearTask = (task, position) => {
-    let list = document.querySelector(".j_list");
-
-    task.style.maxHeight = "0";
-    task.style.paddingTop = "0";
-    task.style.paddingBottom = "0";
-
-    setTimeout(() => {
-        task.remove();
-    }, 300);
-
-    todoList.splice(position, 1);
-
-    if (todoList.length === 0) {
-        list.innerHTML = emptyArea();
-        todoList.unshift();
+const deleteStoraged = () => {
+    if (!tasks.length) {
+        clearStoragedTasks();
+    } else {
+        addStoragedTask();
     }
-
-    listCount();
 }
 
-const clearCompleted = () => {
-    let tasks = document.querySelectorAll(".j_task");
-
-    tasks.forEach((task, i) => {
-        if (task.classList.contains("completed")) {
-            clearTask(task, i);
+const DeleteCompleted = () => {
+    completedTasks().forEach((task) => {
+        if (tasks.length) {
+            let taskToDelete = tasks.find((t) => t.element === task);
+            tasks.splice(tasks.indexOf(taskToDelete), 1);
+            slideUp(task, true);
         }
     })
+
+    deleteStoraged();
+
+    setTimeout(() => {
+        if ((filter !== "active" && allTasksQt() === 0) || (filter === "completed" && completedTasksQt() === 0)) {
+            let empty = emptyElement();
+            taskList().append(empty);
+            slideDown(empty);
+        }
+
+        countTask();
+    }, transitionDuration);
 }
 
-export { clearTask, clearCompleted };
+const DeleteTask = (event) => {
+    event.preventDefault();
+    let taskToDelete = tasks.find((task) => task.element === getTask(event.target));
+
+    tasks.splice(tasks.indexOf(taskToDelete), 1);
+    slideUp(taskToDelete.element, true);
+
+    deleteStoraged();
+
+    setTimeout(() => {
+        if (allTasksQt() === 0) {
+            let empty = emptyElement();
+            taskList().append(empty);
+            slideDown(empty);
+        }
+
+        countTask();
+    }, transitionDuration);
+}
+
+export { DeleteCompleted, DeleteTask, emptyElement };

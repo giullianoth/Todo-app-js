@@ -26,6 +26,14 @@
                             }
                         }
 
+                        .task_content {
+                            .task {
+                                input {
+                                    border-color: $color-very-light-grayish-blue;
+                                }
+                            }
+                        }
+
                         &:hover {
                             input[type="checkbox"] {
                                 background-image:

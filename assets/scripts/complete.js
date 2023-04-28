@@ -1,17 +1,45 @@
-import todoList from "./todo-list.js";
+import countTask from "./count.js";
+import { emptyElement } from "./delete.js";
+import { slideDown, slideUp } from "./effects.js";
+import { addStoragedTask, completedTasksQt, filter, getElement, getTask, isCompletedTask, notCompletedTasksQt, storagedTasks, taskList, tasks, toggleClass } from "./variables.js";
 
-const completeTask = (check, position) => {
-    let task = document.querySelectorAll(".j_task");
-    let taskCheck = task[position].querySelector(".j_complete");
+const CompleteTask = (event) => {
+    let taskElement = getTask(event.target);
+    let checkElement = getElement(".j_complete", taskElement);
 
-    if (check.checked) {
-        task[position].classList.add("completed");
-        taskCheck.setAttribute("checked", true);
-    } else {
-        task[position].classList.remove("completed");
+    toggleClass(taskElement, "completed");
+
+    checkElement.setAttribute(
+        "title",
+        isCompletedTask(taskElement) ? "Set as no-completed" : "Complete this task"
+    );
+
+    tasks.forEach((task) => {
+        if (task.element === taskElement) {
+            task.completed = isCompletedTask(taskElement);
+            addStoragedTask();
+        }
+    })
+
+    if (filter === "active") {
+        isCompletedTask(taskElement) && slideUp(taskElement);
+
+        if (notCompletedTasksQt() === 0) {
+            let empty = emptyElement();
+            taskList().append(empty);
+            slideDown(empty);
+        }
+    } else if (filter === "completed") {
+        !isCompletedTask(taskElement) && slideUp(taskElement);
+
+        if (completedTasksQt() === 0) {
+            let empty = emptyElement();
+            taskList().append(empty);
+            slideDown(empty);
+        }
     }
 
-    todoList[position] = task[position].outerHTML;
+    countTask();
 }
 
-export default completeTask;
+export default CompleteTask;
