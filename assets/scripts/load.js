@@ -1,12 +1,10 @@
-import CompleteTask from "./complete.js";
+import Actions from "./actions.js";
 import { taskElement } from "./create.js";
-import { DeleteCompleted, DeleteTask } from "./delete.js";
-import UpdateTask from "./update.js";
-import { clearCompleted, completeBtn, deleteBtn, emptyMessage, getStoragedTasks, storagedTasks, taskList, tasks, tasksToUpdate } from "./variables.js";
+import { emptyMessage, getStoragedTasks, taskList, tasks, } from "./variables.js";
 
 const LoadTasks = () => {
     
-    if (storagedTasks.getItem("tasks")) {      
+    if (getStoragedTasks()) {      
 
         if (emptyMessage()) {
             emptyMessage().remove();
@@ -23,11 +21,7 @@ const LoadTasks = () => {
 
         tasks.forEach((task) => taskList().append(task.element));
 
-        completeBtn().forEach((btn) => btn.addEventListener("click", CompleteTask));
-        deleteBtn().forEach((btn) => btn.addEventListener("click", DeleteTask));
-        clearCompleted.addEventListener("click", DeleteCompleted);
-
-        tasksToUpdate().forEach((task) => task.addEventListener("dblclick", UpdateTask));
+        Actions();
     }
 }
 

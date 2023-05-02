@@ -14,10 +14,9 @@ const updateTaskForm = (value) => {
 }
 
 const UpdateTask = (event) => {
-    let taskParagraph = event.target;
-    let oldTask = taskParagraph.innerText;
+    let oldTask = event.target.innerText;
     
-    taskParagraph.innerHTML = updateTaskForm(oldTask).outerHTML;
+    event.target.innerHTML = updateTaskForm(oldTask).outerHTML;
     getElement("input", updateForm()).focus();
 
     updateForm().addEventListener("submit", (e) => {
