@@ -67,6 +67,10 @@ const allTasksBtn = filterBtn.find((btn) => elementContainsClass(btn, "j_filter_
 const activeTasksBtn = filterBtn.find((btn) => elementContainsClass(btn, "j_filter_active"));
 const completedTasksBtn = filterBtn.find((btn) => elementContainsClass(btn, "j_filter_completed"));
 
+//DRAG AND DROP ITEMS
+const dropZone = getElement(".j_drop_zone");
+const draggableItems = () => normalArray(getElements(".j_draggable", dropZone));
+
 export {
     getElement, getElements, normalArray,
     setStyle, addClass, removeClass, toggleClass, elementContainsClass, computedStyle, isVisible,
@@ -80,4 +84,6 @@ export {
     completeBtn, deleteBtn, clearCompleted,
     tasksToUpdate, updateForm,
     filterBtn, allTasksBtn, activeTasksBtn, completedTasksBtn,
+
+    dropZone, draggableItems,
 }

@@ -1,5 +1,6 @@
 import Actions from "./actions.js";
 import { taskElement } from "./create.js";
+import ReorderTasks from "./reorder.js";
 import { emptyMessage, getStoragedTasks, taskList, tasks, } from "./variables.js";
 
 const LoadTasks = () => {
@@ -22,6 +23,7 @@ const LoadTasks = () => {
         tasks.forEach((task) => taskList().append(task.element));
 
         Actions();
+        ReorderTasks();
     }
 }
 

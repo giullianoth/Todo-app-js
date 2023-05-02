@@ -43,6 +43,9 @@
                     list-style: none;
                     padding: 20px;
                     border-bottom: 1px solid $color-very-dark-grayish-blue-3;
+                    background-color: $color-very-dark-desaturated-blue;
+
+                    @include transition;
 
                     &:hover {
                         .delete {

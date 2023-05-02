@@ -230,6 +230,8 @@ body button:hover {
   list-style: none;
   padding: 20px;
   border-bottom: 1px solid hsl(237, 14%, 26%);
+  background-color: hsl(235, 24%, 19%);
+  transition: all 0.3s ease 0s;
 }
 .main_app_content_tasks_list li:hover .delete {
   visibility: visible;
@@ -386,6 +388,7 @@ body button:hover {
 }
 .light_theme .main_app_content_tasks_list li {
   border-color: hsl(236, 33%, 92%);
+  background-color: hsl(0, 0%, 100%);
 }
 .light_theme .main_app_content_tasks_list li .delete i {
   color: hsl(233, 11%, 84%);

@@ -6,7 +6,8 @@ import { addStoragedTask, completeCheckElement, completedTasksQt, emptyMessage, 
 
 const taskElement = (newTask, completed) => {
     let task = document.createElement("li");
-    task.className = `j_task${completed ? " completed" : ""}`;
+    task.className = `j_task j_draggable${completed ? " completed" : ""}`;
+    task.setAttribute("draggable", "true");
 
     task.innerHTML = `        
         <div class="task_content">
