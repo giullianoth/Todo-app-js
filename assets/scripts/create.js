@@ -1,9 +1,8 @@
-import CompleteTask from "./complete.js";
+import Actions from "./actions.js";
 import countTask from "./count.js";
-import { DeleteCompleted, DeleteTask, emptyElement } from "./delete.js";
+import { emptyElement } from "./delete.js";
 import { slideDown, slideUp } from "./effects.js";
-import UpdateTask from "./update.js";
-import { addStoragedTask, clearCompleted, completeBtn, completeCheckElement, completedTasksQt, deleteBtn, emptyMessage, filter, formCreate, isCompletedTask, notCompletedTasksQt, taskInputElement, taskList, tasks, tasksToUpdate, transitionDuration, transitionGap } from "./variables.js";
+import { addStoragedTask, completeCheckElement, completedTasksQt, emptyMessage, filter, formCreate, isCompletedTask, notCompletedTasksQt, taskInputElement, taskList, tasks, transitionDuration, transitionGap } from "./variables.js";
 
 const taskElement = (newTask, completed) => {
     let task = document.createElement("li");
@@ -54,11 +53,7 @@ const createTask = () => {
 
             taskInputElement.value = "";
 
-            completeBtn().forEach((btn) => btn.addEventListener("click", CompleteTask));
-            deleteBtn().forEach((btn) => btn.addEventListener("click", DeleteTask));
-            clearCompleted.addEventListener("click", DeleteCompleted);
-
-            tasksToUpdate().forEach((task) => task.addEventListener("dblclick", UpdateTask));
+            Actions();
 
             addStoragedTask();
 
