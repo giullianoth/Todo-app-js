@@ -1,5 +1,8 @@
 import { allTasksQt, completedTasksQt, countArea, filter, notCompletedTasksQt } from "./variables.js";
 
+/**
+ * Shows the quantity of taskson the DOM.
+ */
 const countTask = () => {
     let quantity = 0;
 

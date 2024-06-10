@@ -4,6 +4,12 @@ import { emptyElement } from "./delete.js";
 import { slideDown, slideUp } from "./effects.js";
 import { addStoragedTask, completeCheckElement, completedTasksQt, emptyMessage, filter, formCreate, isCompletedTask, notCompletedTasksQt, taskInputElement, taskList, tasks, transitionDuration, transitionGap } from "./variables.js";
 
+/**
+ * The element for the tasks.
+ * @param {string} newTask 
+ * @param {boolean} completed 
+ * @returns {HTMLLIElement}
+ */
 const taskElement = (newTask, completed) => {
     let task = document.createElement("li");
     task.className = `j_task j_draggable${completed ? " completed" : ""}`;
@@ -27,6 +33,9 @@ const taskElement = (newTask, completed) => {
     return task;
 }
 
+/**
+ * Creates a new task.
+ */
 const createTask = () => {
 
     completeCheckElement.addEventListener("click", () => taskInputElement.focus());
@@ -37,7 +46,7 @@ const createTask = () => {
 
         if (newTask.length > 0) {
             if (emptyMessage()) {
-                slideUp(emptyMessage(), true);
+                emptyMessage().remove()
             }
 
             let newTaskElement = taskElement(newTask, completeCheckElement.checked);
@@ -65,7 +74,6 @@ const createTask = () => {
                     if (!emptyMessage() && (completedTasksQt() === 0 || notCompletedTasksQt() === 0)) {
                         let empty = emptyElement();
                         taskList().append(empty);
-                        slideDown(empty);
                     }
                 }
             }, transitionDuration + transitionGap * 2);

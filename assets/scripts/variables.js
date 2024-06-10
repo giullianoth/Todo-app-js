@@ -1,15 +1,47 @@
 // DOM
+
+/**
+ * Gets an HTML element from DOM.
+ * @param {string} selector 
+ * @param {HTMLElement} parentElement 
+ * @returns {HTMLElement}
+ */
 const getElement = (selector, parentElement = null) => (parentElement ?? document).querySelector(selector);
+
+/**
+ * Gets a list of elements from the DOM.
+ * @param {string} selector 
+ * @param {HTMLElement} parentElement 
+ * @returns {NodeListOf<HTMLElement>}
+ */
 const getElements = (selector, parentElement = null) => (parentElement ?? document).querySelectorAll(selector);
 
+/**
+ * Turns a node list into a regular array.
+ * @param {NodeListOf<HTMLElement>} arr 
+ * @returns {Array}
+ */
 const normalArray = (arr) => {
     let list = [];
     arr.forEach((item) => list.push(item));
     return list;
 }
 
+/**
+ * Sets an inline CSS style on an element.
+ * @param {HTMLElement} element 
+ * @param {string} attr 
+ * @param {string} value 
+ * @returns {void}
+ */
 const setStyle = (element, attr, value) => element.style[attr] = value;
 
+/**
+ * Adds a class name in an element.
+ * @param {HTMLElement} element 
+ * @param {string} className 
+ * @returns {void}
+ */
 const addClass = (element, className) => element.classList.add(className);
 const removeClass = (element, className) => element.classList.remove(className);
 const toggleClass = (element, className) => element.classList.toggle(className);

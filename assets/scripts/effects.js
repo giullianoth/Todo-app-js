@@ -1,11 +1,24 @@
 import { setStyle, transitionDuration, transitionGap } from "./variables.js";
 
+/**
+ * Preoperties of CSS transition attribute.
+ * @param {string} property 
+ * @param {string} duration 
+ * @param {string} timingFunction 
+ * @param {string} delay 
+ * @returns {string}
+ */
 const transitionProps = (property = "all", duration = `${transitionDuration / 1000}s`, timingFunction = "ease", delay = "0s") =>
     `${property} ${duration} ${timingFunction} ${delay}`;
 
+/**
+ * Makes an element appear with slide down effect.
+ * @param {HTMLElement} element 
+ * @param {string} displayElement 
+ */
 const slideDown = (element, displayElement = "block") => {
 
-    setStyle(element, "transition", "");
+    setStyle(element, "transition", "unset");
     setStyle(element, "display", displayElement);
 
     let maxHeight = element.offsetHeight;
@@ -32,6 +45,11 @@ const slideDown = (element, displayElement = "block") => {
     }, transitionGap);
 }
 
+/**
+ * Makes an element disappear with slide up effect.
+ * @param {HTMLElement} element 
+ * @param {boolean} removeElement 
+ */
 const slideUp = (element, removeElement = false) => {
     
     setStyle(element, "transition", transitionProps());
