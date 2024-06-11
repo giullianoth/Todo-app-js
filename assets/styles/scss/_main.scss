@@ -149,7 +149,7 @@
                             
                             input {                            
                                 font-size: 1em;
-                                border-bottom: 1px solid $color-very-dark-grayish-blue-3;
+                                border-bottom: 1px solid $color-light-grayish-blue-2;
                                 width: 100%;
                                 display: block;
                             }
@@ -216,6 +216,13 @@
                     transform: translateY(-175%);
                 }
             }
+        }
+
+        &_dragdrop {
+            padding-block: 10px 40px;
+            text-align: center;
+            font-size: 1rem;
+            color: $color-very-dark-grayish-blue-2;
         }
     }
 }

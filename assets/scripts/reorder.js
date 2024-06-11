@@ -1,5 +1,11 @@
 import { addClass, addStoragedTask, allTasks, draggableItems, dropZone, getElement, getElements, normalArray, removeClass, tasks } from "./variables.js";
 
+/**
+ * Get the element after the dragging element.
+ * @param {HTMLElement} container 
+ * @param {number} y 
+ * @returns {HTMLElement | null}
+ */
 const getDragAfterElement = (container, y) => {
     let items = normalArray(getElements(".j_draggable:not(.dragging)", container))
 
@@ -15,11 +21,19 @@ const getDragAfterElement = (container, y) => {
     }, { offset: Number.NEGATIVE_INFINITY }).element
 }
 
+/**
+ * Features of drag start element.
+ * @param {object} event 
+ */
 const DragStart = (event) => {
     let draggable = event.target
     addClass(draggable, "dragging")
 }
 
+/**
+ * Features of drag end element.
+ * @param {object} event 
+ */
 const DragEnd = (event) => {
     let draggable = event.target
     let taskInDraggable = getElement(".task", draggable).innerText
@@ -31,6 +45,10 @@ const DragEnd = (event) => {
     addStoragedTask()
 }
 
+/**
+ * Features of draggable element when drags over the drop zone.
+ * @param {object} event 
+ */
 const DragOver = (event) => {
     event.preventDefault()
 
@@ -44,6 +62,9 @@ const DragOver = (event) => {
     }
 }
 
+/**
+ * Reorders all the tasks.
+ */
 const ReorderTasks = () => {
 
     draggableItems().forEach((item) => {

@@ -64,7 +64,6 @@ const createTask = () => {
             taskInputElement.value = "";
 
             Actions();
-
             addStoragedTask();
 
             setTimeout(() => {
