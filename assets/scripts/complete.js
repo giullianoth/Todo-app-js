@@ -1,8 +1,12 @@
 import countTask from "./count.js";
 import { emptyElement } from "./delete.js";
 import { slideDown, slideUp } from "./effects.js";
-import { addStoragedTask, completedTasksQt, filter, getElement, getTask, isCompletedTask, notCompletedTasksQt, storagedTasks, taskList, tasks, toggleClass } from "./variables.js";
+import { addStoragedTask, completedTasksQt, filter, getElement, getTask, isCompletedTask, notCompletedTasksQt, storagedTasks, taskList, tasks, toggleClass, updateForm } from "./variables.js";
 
+/**
+ * Sets the tasks as complete or no-complete by clicking the checkbox.
+ * @param {object} event 
+ */
 const CompleteTask = (event) => {
     let taskElement = getTask(event.target);
     let checkElement = getElement(".j_complete", taskElement);
@@ -17,6 +21,14 @@ const CompleteTask = (event) => {
     tasks.forEach((task) => {
         if (task.element === taskElement) {
             task.completed = isCompletedTask(taskElement);
+
+            if (updateForm()) {
+                let taskUpdateInput = getElement("input", updateForm())
+                if (taskUpdateInput.value === task.task) {
+                    taskUpdateInput.focus()
+                }
+            }
+
             addStoragedTask();
         }
     })

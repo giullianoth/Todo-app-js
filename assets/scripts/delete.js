@@ -1,7 +1,11 @@
 import countTask from "./count.js";
 import { slideDown, slideUp } from "./effects.js";
-import { addStoragedTask, allTasksQt, clearStoragedTasks, completedTasks, completedTasksQt, filter, getTask, storagedTasks, taskList, tasks, transitionDuration } from "./variables.js";
+import { addStoragedTask, allTasksQt, clearStoragedTasks, completedTasks, completedTasksQt, filter, getTask, taskList, tasks, transitionDuration } from "./variables.js";
 
+/**
+ * Element for the empty list's message.
+ * @returns {HTMLLIElement}
+ */
 const emptyElement = () => {
     let empty = document.createElement("li");
     empty.className = "empty j_empty";
@@ -9,6 +13,9 @@ const emptyElement = () => {
     return empty;
 }
 
+/**
+ * Deletes tasks from local storage.
+ */
 const deleteStoraged = () => {
     if (!tasks.length) {
         clearStoragedTasks();
@@ -17,6 +24,9 @@ const deleteStoraged = () => {
     }
 }
 
+/**
+ * Removes the completed tasks.
+ */
 const DeleteCompleted = () => {
     completedTasks().forEach((task) => {
         if (tasks.length) {
@@ -39,6 +49,10 @@ const DeleteCompleted = () => {
     }, transitionDuration);
 }
 
+/**
+ * Deletes a specified task.
+ * @param {object} event 
+ */
 const DeleteTask = (event) => {
     event.preventDefault();
     let taskToDelete = tasks.find((task) => task.element === getTask(event.target));

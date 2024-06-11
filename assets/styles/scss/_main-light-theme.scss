@@ -14,6 +14,10 @@
                     li {
                         border-color: $color-very-light-grayish-blue;
                         background-color: $color-white;
+
+                        &.dragging {
+                            background-color: $color-very-light-grayish-blue;
+                        }
     
                         .delete {
                             i {
@@ -75,6 +79,10 @@
                         color: $color-bright-blue;
                     }
                 }
+            }
+
+            &_dragdrop {
+                color: $color-dark-grayish-blue;
             }
         }
     }

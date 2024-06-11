@@ -1,8 +1,12 @@
 import Actions from "./actions.js";
+import countTask from "./count.js";
 import { taskElement } from "./create.js";
 import ReorderTasks from "./reorder.js";
 import { emptyMessage, getStoragedTasks, taskList, tasks, } from "./variables.js";
 
+/**
+ * Loads the task list when document opens.
+ */
 const LoadTasks = () => {
     
     if (getStoragedTasks()) {      
@@ -25,6 +29,8 @@ const LoadTasks = () => {
         Actions();
         ReorderTasks();
     }
+
+    countTask()
 }
 
 export default LoadTasks;

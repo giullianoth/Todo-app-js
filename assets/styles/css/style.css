@@ -240,6 +240,9 @@ body button:hover {
 .main_app_content_tasks_list li:hover .delete i {
   color: hsl(233, 14%, 35%);
 }
+.main_app_content_tasks_list li.dragging {
+  background-color: hsl(237, 14%, 26%);
+}
 .main_app_content_tasks_list li .delete {
   flex-basis: 18px;
   transition: all 0.3s ease 0s;
@@ -259,6 +262,7 @@ body button:hover {
   font-size: 1.2em;
   color: hsl(233, 14%, 35%);
   text-align: center;
+  height: 58px;
 }
 .main_app_content_tasks_list li.completed .task:not(:has(input)) {
   color: hsl(233, 14%, 35%);
@@ -310,9 +314,12 @@ body button:hover {
   flex-basis: calc(100% - 36px - 20px);
   width: 100%;
 }
-.main_app_content_tasks_list li .task_content .task input {
+.main_app_content_tasks_list li .task_content form {
+  flex-basis: calc(100% - 36px - 20px);
+}
+.main_app_content_tasks_list li .task_content form input {
   font-size: 1em;
-  border-bottom: 1px solid hsl(237, 14%, 26%);
+  border-bottom: 1px solid hsl(234, 39%, 85%);
   width: 100%;
   display: block;
 }
@@ -379,6 +386,12 @@ body button:hover {
     transform: translateY(-175%);
   }
 }
+.main_app_content_dragdrop {
+  padding-block: 10px 40px;
+  text-align: center;
+  font-size: 1rem;
+  color: hsl(233, 14%, 35%);
+}
 
 .light_theme .main_app_content_input form {
   background-color: hsl(0, 0%, 100%);
@@ -389,6 +402,9 @@ body button:hover {
 .light_theme .main_app_content_tasks_list li {
   border-color: hsl(236, 33%, 92%);
   background-color: hsl(0, 0%, 100%);
+}
+.light_theme .main_app_content_tasks_list li.dragging {
+  background-color: hsl(236, 33%, 92%);
 }
 .light_theme .main_app_content_tasks_list li .delete i {
   color: hsl(233, 11%, 84%);
@@ -425,6 +441,9 @@ body button:hover {
 }
 .light_theme .main_app_content_filter button.active {
   color: hsl(220, 98%, 61%);
+}
+.light_theme .main_app_content_dragdrop {
+  color: hsl(236, 9%, 61%);
 }
 
 .attribution {

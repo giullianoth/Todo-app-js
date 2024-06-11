@@ -3,6 +3,9 @@ import { emptyElement } from "./delete.js";
 import { slideDown, slideUp } from "./effects.js";
 import { activeTasksBtn, addClass, allTasks, allTasksBtn, allTasksQt, completedTasks, completedTasksBtn, completedTasksQt, emptyMessage, filter, filterBtn, filterTasks, isCompletedTask, isVisible, notCompletedTasks, notCompletedTasksQt, removeClass, taskList, tasks, transitionDuration, transitionGap } from "./variables.js";
 
+/**
+ * Shows filtered tasks by active or completed.
+ */
 const filterTask = () => {
 
     filterBtn.forEach((btn, i, arr) => {

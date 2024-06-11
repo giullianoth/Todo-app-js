@@ -1,7 +1,15 @@
 import { addClass, elementContainsClass, getElement, removeClass, setStyle, toggleClass } from "./variables.js";
 
+/**
+ * Sets the title attribute on button.
+ * @param {HTMLElement} btn 
+ * @returns {void}
+ */
 const btnThemeAttribute = (btn) => btn.setAttribute("title", (elementContainsClass(document.body, "light_theme") ? "Change to dark theme" : "Change to light theme"));
 
+/**
+ * Changes DOM theme to light or dark mode.
+ */
 const changeTheme = () => {
     const btnTheme = getElement(".j_theme");
     const btnThemeIcon = getElement("i", btnTheme);
